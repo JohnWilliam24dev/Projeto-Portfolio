@@ -1,10 +1,57 @@
 export const profileContent = {
-  name: 'Seu Nome / Nick aqui',
+  name: 'Levi Bluu',
   tagline: 'Artista de modelos VTuber 3D',
-  bio: 'TODO: escreva aqui sua introdução — quem você é, seu estilo, há quanto tempo desenha, etc. (o arquivo Introdução.txt veio vazio).',
+  bio: 'Olá! Eu Sou Levi Bluu. Sou um artista, ilustrador e designer.',
   socials: [],
-  termsAndConditions:
-    'TODO: cole aqui os termos e condições do serviço (o arquivo termos_e_condições.txt veio vazio).',
+  termsAndConditions: `# Termos e condições
+
+**Aviso!**
+
+**"Se eu não ficar confortável com um pedido, tenho todo o direito de não fazê-lo!"**
+
+**Ao fazer um pedido comigo, você automaticamente concorda com todos os termos e condições, que estão listados.**
+
+## Sobre os Pedidos:
+
+- Eu faço as comissions por ordem do pedido. Se houver um na sua frente, ele será feito primeiro. Se você precisar da sua arte ou modelo VTuber para uma data específica, ME AVISE.
+- O pagamento é somente via pix.
+- Eu só vou começar a trabalhar na arte quando a metade do pagamento for efetuado.
+- Você terá direito a alterações quando a arte estiver no rascunho.
+- Quando o rascunho final for aprovado, precisarei do restante do pagamento para prosseguir com a arte.
+- Você será informado de TODO o processo de criação da arte ou do modelo.
+- Eu posso levar de um a dois meses para entregar seu modelo VTuber e posso levar até 1 mês para entregar a sua arte.
+- Caso ocorra algum imprevisto, você será avisado.
+- Assim que eu iniciar a arte ou o modelo VTuber, NÃO TERÁ nenhum tipo de reembolso. A não ser que eu, por algum motivo, não consiga finalizar seu pedido.
+- De preferência, me mande uma referência do seu personagem. Caso você não tenha, irei cobrar uma taxa.
+- Dependo da complexidade e do que for pedido para adicionar no seu modelo VTuber ou na sua arte, posso cobrar um valor a mais.
+- Se eu não me sentir confortável com o pedido, tenho todo o direito de recusar e devolver o valor pago.
+
+## Direito autoral e uso
+
+### Eu, Levi Bluu (o artista):
+
+- Me reservo do direito de cancelar e reembolsar o pedido a qualquer momento caso haja um imprevisto ou me sinta desconfortável.
+- Retenho todos os direitos autorais sobre o pedido.
+- NÃO reivindicarei a propriedade intelectual da obra de arte ou modelo VTuber encomendada.
+- NÃO lucrarei mais com a obra de arte ou modelo VTuber encomendada.
+- Me reservo o direito de publicar a arte ou modelo VTuber encomendada online, em meu portfólio, bem como em publicações. Caso em modelos de VTubers seja pedido sigilo para debut, respeitarei e farei a encomenda sob sigilo, e só publicarei depois que o modelo VTuber for publicado pelo cliente.
+
+### Você (o cliente):
+
+- Pode postar/usar a arte em qualquer site ou rede social.
+- Você pode obter lucros com a arte ou modelo VTuber encomendada, não me incomodo com isso.
+- Você pode alterar a arte ou o modelo VTuber, como: mudar a cor dos olhos, mudar o cabelo, mudar a roupa (nada de NSFW pesado ou algo considerado problemático).
+- Você obterá os direitos de propriedade intelectual.
+- Você pode usar o modelo VTuber e a arte para fins comerciais.
+- Você NÃO pode fazer revenda da arte ou do modelo encomendado. Ex: revender a arte ou o modelo para outra pessoa.
+
+## O seguinte é considerado violação dos direitos autorais:
+
+- Fazer NSFW pesado
+- Reivindicar a obra de arte como sua, ou seja, dizer que foi você que fez
+- Fazer revenda
+- Dizer que você fez a arte ou o modelo, sendo que você não fez
+- Violação de qualquer uma das coisas exigidas acima`,
 };
 
 export const doList = [
