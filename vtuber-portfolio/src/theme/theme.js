@@ -1,10 +1,5 @@
 import { createTheme } from '@mui/material/styles';
 
-/**
- * Tokens de design — únicas "fontes da verdade" de cor/tipografia.
- * Derivados da própria arte do perfil (roxo/azul das madeixas, o teal
- * do fundo) em vez de uma paleta genérica.
- */
 export const tokens = {
   color: {
     bg: '#0A0C18',

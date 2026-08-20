@@ -6,12 +6,6 @@ import Button from '@mui/material/Button';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { tokens } from '../../theme/theme';
 
-/**
- * Popup de confirmação. Nielsen #1 — feedback claro de que a ação foi
- * concluída com sucesso, com próximo passo explícito (aguardar contato).
- * Nielsen #3 — controle do usuário: fica aberto até ELE decidir sair,
- * em vez de redirecionar sozinho e cortar a leitura da mensagem.
- */
 export default function SuccessDialog({ open, onGoHome }) {
   return (
     <Dialog

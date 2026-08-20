@@ -1,9 +1,3 @@
-/**
- * Validações puras, sem dependência de React ou de qualquer componente.
- * Cada função recebe os dados do passo e devolve um objeto de erros
- * ({ campo: 'mensagem' }). Objeto vazio = passo válido.
- */
-
 const CONTACT_REGEX = {
   email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
   instagram: /^@?[\w.]{1,30}$/,

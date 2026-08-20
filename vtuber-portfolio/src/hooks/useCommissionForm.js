@@ -2,11 +2,6 @@ import { useCallback } from 'react';
 import { useCommissionFormContext } from '../state/CommissionFormContext';
 import { TOTAL_STEPS, commissionFormActions } from '../state/commissionFormReducer';
 
-/**
- * API pública do formulário de comissão, usada pelos componentes de step.
- * Esconde os detalhes do reducer/dispatch — se a implementação do estado
- * mudar (ex.: trocar useReducer por outra lib), só este hook muda.
- */
 export function useCommissionForm() {
   const { state, dispatch } = useCommissionFormContext();
 

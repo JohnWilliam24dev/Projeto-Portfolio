@@ -1,11 +1,6 @@
 import Box from '@mui/material/Box';
 import { tokens } from '../../theme/theme';
 
-/**
- * Elemento assinatura do site: um traço orgânico inspirado nas linhas
- * de tatuagem/veias do desenho de perfil, usado como divisor entre
- * seções e como "fio" do indicador de progresso do formulário.
- */
 export default function VineDivider({ flip = false, sx = {} }) {
   return (
     <Box

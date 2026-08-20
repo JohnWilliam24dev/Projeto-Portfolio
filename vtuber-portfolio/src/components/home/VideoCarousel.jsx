@@ -8,17 +8,6 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import MovieOutlinedIcon from '@mui/icons-material/MovieOutlined';
 import { tokens } from '../../theme/theme';
 
-/**
- * Carrossel de vídeos do portfólio.
- *
- * `videos` é um array de { src, poster?, title? }. Comece vazio (como
- * está agora) e vá adicionando os vídeos reais depois:
- *
- *   import demo1 from '../../assets/videos/demo1.mp4';
- *   const videos = [{ src: demo1, title: 'Modelo Médio - Sakura' }];
- *
- * Com o array vazio, o carrossel mostra um placeholder — nada quebra.
- */
 export default function VideoCarousel({ videos = [] }) {
   const [index, setIndex] = useState(0);
   const hasVideos = videos.length > 0;

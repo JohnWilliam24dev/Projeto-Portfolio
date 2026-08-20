@@ -1,11 +1,3 @@
-/**
- * Catálogo de modelos VTuber disponíveis para comissão.
- *
- * Mantido separado da UI: se um preço mudar ou um novo modelo for criado,
- * a alteração acontece só aqui — nenhum componente precisa ser tocado
- * (Single Responsibility + Open/Closed).
- */
-
 export const MODEL_TYPES = Object.freeze({
   CHIBI: 'chibi',
   BASICO: 'basico',

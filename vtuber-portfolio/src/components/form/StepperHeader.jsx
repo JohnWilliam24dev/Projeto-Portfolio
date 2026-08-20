@@ -12,10 +12,6 @@ export const STEP_LABELS = [
   'Resumo',
 ];
 
-/**
- * Mostra em que etapa o usuário está e quantas faltam.
- * Nielsen #1 — Visibilidade do status do sistema.
- */
 export default function StepperHeader({ currentStep }) {
   return (
     <Box sx={{ maxWidth: 720, mx: 'auto', px: { xs: 2, md: 0 }, pt: { xs: 4, md: 6 }, pb: 2 }}>

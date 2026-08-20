@@ -1,20 +1,16 @@
-export const TOTAL_STEPS = 5; // 4 forms + resumo
+export const TOTAL_STEPS = 5;
 
 export const initialCommissionFormState = {
   currentStep: 0,
   isSubmitting: false,
   submitError: null,
   data: {
-    // Form 1
     nickname: '',
     contact: '',
-    // Form 2
     modelType: '',
-    // Form 3
     additionalContentNotes: '',
     acessorios: 0,
     expressoesExtras: 0,
-    // Form 4
     referenceFile: null,
   },
 };

@@ -6,8 +6,6 @@ const CommissionFormContext = createContext(null);
 export function CommissionFormProvider({ children }) {
   const [state, dispatch] = useReducer(commissionFormReducer, initialCommissionFormState);
 
-  // useMemo evita recriar o objeto de contexto (e re-renderizar todos os
-  // consumidores) a cada render do provider.
   const value = useMemo(() => ({ state, dispatch }), [state]);
 
   return (
@@ -15,10 +13,6 @@ export function CommissionFormProvider({ children }) {
   );
 }
 
-/**
- * Hook de acesso ao contexto do formulário. Lança erro cedo se usado
- * fora do provider — evita bugs silenciosos de "state undefined".
- */
 export function useCommissionFormContext() {
   const context = useContext(CommissionFormContext);
   if (!context) {
