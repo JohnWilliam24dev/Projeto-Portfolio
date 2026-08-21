@@ -62,6 +62,15 @@ export default function HeroSection() {
         >
           Encomendar meu VTuber
         </Button>
+
+        <Button
+          variant="text"
+          color="inherit"
+          onClick={() => navigate('/termos')}
+          sx={{ mt: 1, display: 'block', color: tokens.color.textMuted }}
+        >
+          Termos e condições
+        </Button>
       </Box>
     </Stack>
   );

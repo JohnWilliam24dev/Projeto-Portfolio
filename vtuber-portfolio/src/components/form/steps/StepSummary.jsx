@@ -1,7 +1,12 @@
+import { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Alert from '@mui/material/Alert';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
 import StepCard from '../../common/StepCard';
 import FormNavigationButtons from '../../common/FormNavigationButtons';
 import { useCommissionForm } from '../../../hooks/useCommissionForm';
@@ -27,6 +32,7 @@ export default function StepSummary({ onConfirm }) {
   const { data, goBack, isSubmitting, submitError } = useCommissionForm();
   const model = getModelById(data.modelType);
   const priceResult = usePriceSimulator(data.modelType, data.acessorios, data.expressoesExtras);
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   return (
     <StepCard title="Resumo do seu pedido" subtitle="Confira antes de enviar para análise.">
@@ -61,10 +67,36 @@ export default function StepSummary({ onConfirm }) {
         </Alert>
       )}
 
+      <FormControlLabel
+        sx={{ mt: 3, alignItems: 'flex-start' }}
+        control={
+          <Checkbox
+            checked={acceptedTerms}
+            onChange={(e) => setAcceptedTerms(e.target.checked)}
+            sx={{ mt: -1 }}
+          />
+        }
+        label={
+          <Typography variant="body2" sx={{ color: tokens.color.textMuted }}>
+            Eu aceito os{' '}
+            <Link
+              component={RouterLink}
+              to="/termos"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ color: tokens.color.teal }}
+            >
+              termos e condições
+            </Link>
+          </Typography>
+        }
+      />
+
       <FormNavigationButtons
         onBack={goBack}
         onNext={onConfirm}
         nextLabel="Enviar pedido"
+        nextDisabled={!acceptedTerms}
         loading={isSubmitting}
       />
     </StepCard>
