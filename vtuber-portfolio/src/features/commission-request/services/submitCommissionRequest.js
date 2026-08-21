@@ -1,6 +1,6 @@
-export async function submitOrder(orderPayload) {
+export async function submitCommissionRequest(orderPayload) {
   try {
-    console.info('[orderService] Pedido recebido (modo local, sem backend):', orderPayload);
+    console.info('[submitCommissionRequest] Pedido recebido (modo local, sem backend):', orderPayload);
 
     await simulateNetworkDelay();
 

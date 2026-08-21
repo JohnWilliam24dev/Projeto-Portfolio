@@ -3,10 +3,10 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import StepCard from '../../common/StepCard';
-import FormNavigationButtons from '../../common/FormNavigationButtons';
-import { useCommissionForm } from '../../../hooks/useCommissionForm';
-import { usePriceSimulator } from '../../../hooks/usePriceSimulator';
+import StepCard from './StepCard';
+import FormNavigationButtons from './FormNavigationButtons';
+import { useCommissionForm } from '../hooks/useCommissionForm';
+import { usePriceSimulator } from '../hooks/usePriceSimulator';
 import { ADDONS } from '../../../domain/pricing';
 import { formatCurrencyBRL } from '../../../domain/pricing';
 import { tokens } from '../../../theme/theme';
@@ -31,7 +31,7 @@ function AddonNumberField({ label, value, onChange, percentLabel }) {
   );
 }
 
-export default function StepAdditionalContent() {
+export default function AdditionalContentStep() {
   const { data, updateField, goNext, goBack } = useCommissionForm();
   const priceResult = usePriceSimulator(data.modelType, data.acessorios, data.expressoesExtras);
 

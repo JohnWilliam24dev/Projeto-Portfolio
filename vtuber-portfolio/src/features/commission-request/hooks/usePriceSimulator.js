@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { calculateSimulatedPrice } from '../domain/pricing';
+import { calculateSimulatedPrice } from '../../../domain/pricing';
 
 export function usePriceSimulator(modelType, acessorios, expressoesExtras) {
   return useMemo(

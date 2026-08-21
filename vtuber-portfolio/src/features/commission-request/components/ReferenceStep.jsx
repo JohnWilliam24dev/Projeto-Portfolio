@@ -7,13 +7,13 @@ import FormHelperText from '@mui/material/FormHelperText';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
-import StepCard from '../../common/StepCard';
-import FormNavigationButtons from '../../common/FormNavigationButtons';
-import { useCommissionForm } from '../../../hooks/useCommissionForm';
-import { validateStepReference, hasErrors } from '../../../utils/validation';
+import StepCard from './StepCard';
+import FormNavigationButtons from './FormNavigationButtons';
+import { useCommissionForm } from '../hooks/useCommissionForm';
+import { validateStepReference, hasErrors } from '../validation/commissionRequestValidation';
 import { tokens } from '../../../theme/theme';
 
-export default function StepReference() {
+export default function ReferenceStep() {
   const { data, updateField, goNext, goBack } = useCommissionForm();
   const [touched, setTouched] = useState(false);
   const [errors, setErrors] = useState({});

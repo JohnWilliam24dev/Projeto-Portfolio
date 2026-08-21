@@ -5,9 +5,9 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import profileImage from '../../assets/images/profile.png';
-import { profileContent } from '../../content/profileContent';
-import { tokens } from '../../theme/theme';
+import profileImage from '../../../assets/images/profile.png';
+import { profileContent } from '../../../content/profileContent';
+import { tokens } from '../../../theme/theme';
 
 export default function HeroSection() {
   const navigate = useNavigate();

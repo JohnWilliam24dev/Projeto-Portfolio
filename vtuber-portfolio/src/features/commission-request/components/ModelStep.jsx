@@ -3,10 +3,10 @@ import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import FormHelperText from '@mui/material/FormHelperText';
-import StepCard from '../../common/StepCard';
-import FormNavigationButtons from '../../common/FormNavigationButtons';
-import { useCommissionForm } from '../../../hooks/useCommissionForm';
-import { validateStepModelType, hasErrors } from '../../../utils/validation';
+import StepCard from './StepCard';
+import FormNavigationButtons from './FormNavigationButtons';
+import { useCommissionForm } from '../hooks/useCommissionForm';
+import { validateStepModelType, hasErrors } from '../validation/commissionRequestValidation';
 import { MODEL_CATALOG } from '../../../domain/modelTypes';
 import { formatCurrencyBRL } from '../../../domain/pricing';
 import { tokens } from '../../../theme/theme';
@@ -45,7 +45,7 @@ function ModelOptionCard({ model, selected, onSelect }) {
   );
 }
 
-export default function StepModelType() {
+export default function ModelStep() {
   const { data, updateField, goNext, goBack } = useCommissionForm();
   const [touched, setTouched] = useState(false);
   const [errors, setErrors] = useState({});

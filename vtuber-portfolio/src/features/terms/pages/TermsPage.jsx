@@ -7,9 +7,9 @@ import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Alert from '@mui/material/Alert';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import PageBackground from '../layout/PageBackground';
-import { profileContent } from '../../content/profileContent';
-import { tokens } from '../../theme/theme';
+import PageBackground from '../../../core/layouts/PageBackground';
+import { profileContent } from '../../../content/profileContent';
+import { tokens } from '../../../theme/theme';
 
 function TermsList({ items }) {
   return (

@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
-import StepperHeader from './StepperHeader';
-import StepContact from './steps/StepContact';
-import StepModelType from './steps/StepModelType';
-import StepAdditionalContent from './steps/StepAdditionalContent';
-import StepReference from './steps/StepReference';
-import StepSummary from './steps/StepSummary';
-import SuccessDialog from './SuccessDialog';
-import PageBackground from '../layout/PageBackground';
-import { CommissionFormProvider, useCommissionFormContext } from '../../state/CommissionFormContext';
-import { commissionFormActions } from '../../state/commissionFormReducer';
-import { useCommissionForm } from '../../hooks/useCommissionForm';
-import { submitOrder } from '../../services/orderService';
+import StepperHeader from '../components/StepperHeader';
+import ContactStep from '../components/ContactStep';
+import ModelStep from '../components/ModelStep';
+import AdditionalContentStep from '../components/AdditionalContentStep';
+import ReferenceStep from '../components/ReferenceStep';
+import SummaryStep from '../components/SummaryStep';
+import SuccessDialog from '../components/SuccessDialog';
+import PageBackground from '../../../core/layouts/PageBackground';
+import { CommissionFormProvider, useCommissionFormContext } from '../state/CommissionFormContext';
+import { commissionFormActions } from '../state/commissionFormReducer';
+import { useCommissionForm } from '../hooks/useCommissionForm';
+import { submitCommissionRequest } from '../services/submitCommissionRequest';
 
-const STEP_COMPONENTS = [StepContact, StepModelType, StepAdditionalContent, StepReference];
+const STEP_COMPONENTS = [ContactStep, ModelStep, AdditionalContentStep, ReferenceStep];
 
 function WizardContent({ onOrderConfirmed }) {
   const { currentStep, data } = useCommissionForm();
@@ -22,7 +22,7 @@ function WizardContent({ onOrderConfirmed }) {
 
   const handleConfirmOrder = async () => {
     dispatch({ type: commissionFormActions.SUBMIT_START });
-    const result = await submitOrder(data);
+    const result = await submitCommissionRequest(data);
 
     if (result.success) {
       dispatch({ type: commissionFormActions.SUBMIT_SUCCESS });
@@ -40,7 +40,7 @@ function WizardContent({ onOrderConfirmed }) {
       <StepperHeader currentStep={currentStep} />
       <Box sx={{ px: { xs: 2, md: 0 }, pb: 10 }}>
         {isSummaryStep ? (
-          <StepSummary onConfirm={handleConfirmOrder} />
+          <SummaryStep onConfirm={handleConfirmOrder} />
         ) : (
           <CurrentStepComponent />
         )}
@@ -49,7 +49,7 @@ function WizardContent({ onOrderConfirmed }) {
   );
 }
 
-export default function FormWizardPage() {
+export default function CommissionRequestPage() {
   const navigate = useNavigate();
   const [showSuccess, setShowSuccess] = useState(false);
 

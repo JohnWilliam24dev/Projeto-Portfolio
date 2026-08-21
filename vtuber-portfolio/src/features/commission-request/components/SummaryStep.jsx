@@ -7,10 +7,10 @@ import Alert from '@mui/material/Alert';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
-import StepCard from '../../common/StepCard';
-import FormNavigationButtons from '../../common/FormNavigationButtons';
-import { useCommissionForm } from '../../../hooks/useCommissionForm';
-import { usePriceSimulator } from '../../../hooks/usePriceSimulator';
+import StepCard from './StepCard';
+import FormNavigationButtons from './FormNavigationButtons';
+import { useCommissionForm } from '../hooks/useCommissionForm';
+import { usePriceSimulator } from '../hooks/usePriceSimulator';
 import { getModelById } from '../../../domain/modelTypes';
 import { formatCurrencyBRL } from '../../../domain/pricing';
 import { tokens } from '../../../theme/theme';
@@ -28,7 +28,7 @@ function SummaryRow({ label, value }) {
   );
 }
 
-export default function StepSummary({ onConfirm }) {
+export default function SummaryStep({ onConfirm }) {
   const { data, goBack, isSubmitting, submitError } = useCommissionForm();
   const model = getModelById(data.modelType);
   const priceResult = usePriceSimulator(data.modelType, data.acessorios, data.expressoesExtras);

@@ -1,8 +1,8 @@
-import HeroSection from './HeroSection';
-import DoAndDontSection from './DoAndDontSection';
-import VideoCarousel from './VideoCarousel';
-import VineDivider from '../layout/VineDivider';
-import PageBackground from '../layout/PageBackground';
+import HeroSection from '../components/HeroSection';
+import DoAndDontSection from '../components/DoAndDontSection';
+import VideoCarousel from '../components/VideoCarousel';
+import VineDivider from '../../../core/layouts/VineDivider';
+import PageBackground from '../../../core/layouts/PageBackground';
 
 export default function HomePage() {
   return (

@@ -4,7 +4,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { tokens } from '../../theme/theme';
+import { tokens } from '../../../theme/theme';
 
 export default function SuccessDialog({ open, onGoHome }) {
   return (

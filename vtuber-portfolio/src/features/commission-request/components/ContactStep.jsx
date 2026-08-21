@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import StepCard from '../../common/StepCard';
-import FormNavigationButtons from '../../common/FormNavigationButtons';
-import { useCommissionForm } from '../../../hooks/useCommissionForm';
-import { validateStepContact, hasErrors } from '../../../utils/validation';
+import StepCard from './StepCard';
+import FormNavigationButtons from './FormNavigationButtons';
+import { useCommissionForm } from '../hooks/useCommissionForm';
+import { validateStepContact, hasErrors } from '../validation/commissionRequestValidation';
 
-export default function StepContact() {
+export default function ContactStep() {
   const { data, updateField, goNext } = useCommissionForm();
   const [touched, setTouched] = useState(false);
   const [errors, setErrors] = useState({});

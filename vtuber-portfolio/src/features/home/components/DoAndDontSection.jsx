@@ -3,8 +3,8 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
-import { doList, dontList } from '../../content/profileContent';
-import { tokens } from '../../theme/theme';
+import { doList, dontList } from '../../../content/profileContent';
+import { tokens } from '../../../theme/theme';
 
 function ListColumn({ title, items, icon, accentColor }) {
   return (
