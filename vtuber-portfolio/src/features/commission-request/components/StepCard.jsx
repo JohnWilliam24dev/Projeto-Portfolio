@@ -1,7 +1,7 @@
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { tokens } from '../../../theme/theme';
+import { tokens } from '../../../core/config/theme';
 
 export default function StepCard({ title, subtitle, children }) {
   return (

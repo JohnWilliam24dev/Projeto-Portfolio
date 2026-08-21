@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import StepCard from './StepCard';
 import FormNavigationButtons from './FormNavigationButtons';
 import { useCommissionForm } from '../hooks/useCommissionForm';
-import { validateStepContact, hasErrors } from '../validation/commissionRequestValidation';
+import { validateContactStep, hasErrors } from '../validation/commissionRequestValidation';
 
 export default function ContactStep() {
   const { data, updateField, goNext } = useCommissionForm();
@@ -12,7 +12,7 @@ export default function ContactStep() {
   const [errors, setErrors] = useState({});
 
   const handleNext = () => {
-    const validationErrors = validateStepContact(data);
+    const validationErrors = validateContactStep(data);
     setErrors(validationErrors);
     setTouched(true);
     if (!hasErrors(validationErrors)) goNext();

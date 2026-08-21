@@ -9,7 +9,7 @@ import { useCommissionForm } from '../hooks/useCommissionForm';
 import { usePriceSimulator } from '../hooks/usePriceSimulator';
 import { ADDONS } from '../../../domain/pricing';
 import { formatCurrencyBRL } from '../../../domain/pricing';
-import { tokens } from '../../../theme/theme';
+import { tokens } from '../../../core/config/theme';
 
 function AddonNumberField({ label, value, onChange, percentLabel }) {
   return (

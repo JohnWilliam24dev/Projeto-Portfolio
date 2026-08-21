@@ -1,5 +1,5 @@
 import Box from '@mui/material/Box';
-import { tokens } from '../../theme/theme';
+import { tokens } from '../config/theme';
 
 export default function VineDivider({ flip = false, sx = {} }) {
   return (

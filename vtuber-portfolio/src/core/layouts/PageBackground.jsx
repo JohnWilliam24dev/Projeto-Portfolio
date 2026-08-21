@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import backgroundImage from '../../assets/images/background.png';
-import { tokens } from '../../theme/theme';
+import { tokens } from '../config/theme';
 
 export default function PageBackground({ children }) {
   return (

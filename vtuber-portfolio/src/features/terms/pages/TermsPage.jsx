@@ -8,8 +8,8 @@ import Divider from '@mui/material/Divider';
 import Alert from '@mui/material/Alert';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import PageBackground from '../../../core/layouts/PageBackground';
-import { profileContent } from '../../../content/profileContent';
-import { tokens } from '../../../theme/theme';
+import { profileContent } from '../../../shared/utils/profileContent';
+import { tokens } from '../../../core/config/theme';
 
 function TermsList({ items }) {
   return (

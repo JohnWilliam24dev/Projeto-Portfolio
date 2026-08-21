@@ -4,7 +4,7 @@ const CONTACT_REGEX = {
   discord: /^.{2,32}#?\d{0,4}$/,
 };
 
-export function validateStepContact(data) {
+export function validateContactStep(data) {
   const errors = {};
 
   if (!data.nickname?.trim()) {
@@ -27,7 +27,7 @@ export function validateStepContact(data) {
   return errors;
 }
 
-export function validateStepModelType(data) {
+export function validateModelStep(data) {
   const errors = {};
   if (!data.modelType) {
     errors.modelType = 'Escolha um tipo de modelo para continuar.';
@@ -35,7 +35,7 @@ export function validateStepModelType(data) {
   return errors;
 }
 
-export function validateStepReference(data) {
+export function validateReferenceStep(data) {
   const errors = {};
   if (!data.referenceFile) {
     errors.referenceFile = 'Envie ao menos uma referência (imagem) do modelo desejado.';

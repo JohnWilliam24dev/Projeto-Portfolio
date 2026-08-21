@@ -13,7 +13,7 @@ import { useCommissionForm } from '../hooks/useCommissionForm';
 import { usePriceSimulator } from '../hooks/usePriceSimulator';
 import { getModelById } from '../../../domain/modelTypes';
 import { formatCurrencyBRL } from '../../../domain/pricing';
-import { tokens } from '../../../theme/theme';
+import { tokens } from '../../../core/config/theme';
 
 function SummaryRow({ label, value }) {
   return (

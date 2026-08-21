@@ -10,8 +10,8 @@ import IconButton from '@mui/material/IconButton';
 import StepCard from './StepCard';
 import FormNavigationButtons from './FormNavigationButtons';
 import { useCommissionForm } from '../hooks/useCommissionForm';
-import { validateStepReference, hasErrors } from '../validation/commissionRequestValidation';
-import { tokens } from '../../../theme/theme';
+import { validateReferenceStep, hasErrors } from '../validation/commissionRequestValidation';
+import { tokens } from '../../../core/config/theme';
 
 export default function ReferenceStep() {
   const { data, updateField, goNext, goBack } = useCommissionForm();
@@ -30,7 +30,7 @@ export default function ReferenceStep() {
   };
 
   const handleNext = () => {
-    const validationErrors = validateStepReference(data);
+    const validationErrors = validateReferenceStep(data);
     setErrors(validationErrors);
     setTouched(true);
     if (!hasErrors(validationErrors)) goNext();

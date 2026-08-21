@@ -6,10 +6,10 @@ import FormHelperText from '@mui/material/FormHelperText';
 import StepCard from './StepCard';
 import FormNavigationButtons from './FormNavigationButtons';
 import { useCommissionForm } from '../hooks/useCommissionForm';
-import { validateStepModelType, hasErrors } from '../validation/commissionRequestValidation';
+import { validateModelStep, hasErrors } from '../validation/commissionRequestValidation';
 import { MODEL_CATALOG } from '../../../domain/modelTypes';
 import { formatCurrencyBRL } from '../../../domain/pricing';
-import { tokens } from '../../../theme/theme';
+import { tokens } from '../../../core/config/theme';
 
 function ModelOptionCard({ model, selected, onSelect }) {
   return (
@@ -51,7 +51,7 @@ export default function ModelStep() {
   const [errors, setErrors] = useState({});
 
   const handleNext = () => {
-    const validationErrors = validateStepModelType(data);
+    const validationErrors = validateModelStep(data);
     setErrors(validationErrors);
     setTouched(true);
     if (!hasErrors(validationErrors)) goNext();

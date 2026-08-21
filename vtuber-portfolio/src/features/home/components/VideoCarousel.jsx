@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import MovieOutlinedIcon from '@mui/icons-material/MovieOutlined';
-import { tokens } from '../../../theme/theme';
+import { tokens } from '../../../core/config/theme';
 
 export default function VideoCarousel({ videos = [] }) {
   const [index, setIndex] = useState(0);
