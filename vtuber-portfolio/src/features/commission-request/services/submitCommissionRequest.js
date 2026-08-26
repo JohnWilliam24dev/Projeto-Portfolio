@@ -1,16 +1,31 @@
+import { commissionApiUrl } from '../../../core/config/commissionApi';
+
 export async function submitCommissionRequest(orderPayload) {
   try {
-    console.info('[submitCommissionRequest] Pedido recebido (modo local, sem backend):', orderPayload);
+    const formData = new FormData();
+    formData.append('nickname', orderPayload.nickname.trim());
+    formData.append('contact', orderPayload.contact.trim());
+    formData.append('modelType', orderPayload.modelType);
+    formData.append('additionalContentNotes', orderPayload.additionalContentNotes.trim());
+    formData.append('acessorios', String(orderPayload.acessorios));
+    formData.append('expressoesExtras', String(orderPayload.expressoesExtras));
+    formData.append('referenceFile', orderPayload.referenceFile);
 
-    await simulateNetworkDelay();
+    const response = await fetch(commissionApiUrl, {
+      method: 'POST',
+      body: formData,
+    });
+    const result = await response.json().catch(() => ({}));
 
-    const fakeOrderId = `local-${Date.now()}`;
-    return { success: true, orderId: fakeOrderId };
-  } catch (error) {
-    return { success: false, error: error.message };
+    if (!response.ok) {
+      return { success: false, error: result.error || 'Erro ao enviar o pedido.' };
+    }
+
+    return { success: true, orderId: result.orderId };
+  } catch {
+    return {
+      success: false,
+      error: 'Não foi possível conectar ao servidor. Tente novamente em alguns instantes.',
+    };
   }
-}
-
-function simulateNetworkDelay(ms = 800) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
