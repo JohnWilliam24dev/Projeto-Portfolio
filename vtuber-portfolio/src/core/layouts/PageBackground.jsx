@@ -1,5 +1,5 @@
 import Box from '@mui/material/Box';
-import backgroundImage from '../../assets/images/background.png';
+import { media } from '../config/media';
 import { tokens } from '../config/theme';
 
 export default function PageBackground({ children }) {
@@ -9,7 +9,7 @@ export default function PageBackground({ children }) {
         minHeight: '100vh',
         position: 'relative',
         backgroundColor: tokens.color.bg,
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundImage: `url(${media.backgroundPhoto})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
