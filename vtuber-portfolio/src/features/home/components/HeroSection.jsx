@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import profileImage from '../../../assets/images/profile.png';
+import { media } from '../../../core/config/media';
 import { profileContent } from '../../../shared/utils/profileContent';
 import { tokens } from '../../../core/config/theme';
 
@@ -22,7 +22,7 @@ export default function HeroSection() {
       sx={{ minHeight: { xs: 'auto', md: '92vh' }, px: { xs: 3, md: 8 }, py: { xs: 10, md: 4 } }}
     >
       <Avatar
-        src={profileImage}
+        src={media.profilePhoto}
         alt={`Foto de perfil de ${profileContent.name}`}
         sx={{
           width: { xs: 200, md: 300 },
