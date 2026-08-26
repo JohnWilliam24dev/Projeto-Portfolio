@@ -21,6 +21,16 @@ npm run build   # gera a pasta dist/
 npm run preview # serve o build localmente pra conferir
 ```
 
+## Integração com a API
+
+Crie `vtuber-portfolio/.env.local` a partir de `vtuber-portfolio/.env.example` e defina a URL do projeto de backend publicado:
+
+```bash
+VITE_API_BASE_URL=https://seu-backend.vercel.app
+```
+
+Na Vercel do frontend, inclua a mesma variável em **Settings → Environment Variables** para Preview e Production e faça um novo deploy. Essa URL é pública por definição; tokens do Telegram ficam exclusivamente no projeto de backend.
+
 ## Estrutura
 
 Arquitetura feature-based: cada capacidade do produto é dona de sua

@@ -39,7 +39,7 @@ export default function ReferenceStep() {
   return (
     <StepCard
       title="Referência do modelo desejado"
-      subtitle="Pode ser um desenho, sketch ou imagem de apoio — ajuda muito na análise."
+      subtitle="Envie uma imagem PNG, JPEG ou WebP de até 5 MB — ajuda muito na análise."
     >
       <Box
         sx={{
@@ -75,7 +75,7 @@ export default function ReferenceStep() {
             ref={inputRef}
             type="file"
             hidden
-            accept="image/*,.pdf"
+            accept="image/jpeg,image/png,image/webp"
             onChange={handleFileChange}
           />
         </Button>
