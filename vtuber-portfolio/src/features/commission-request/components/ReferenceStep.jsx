@@ -21,6 +21,17 @@ export default function ReferenceStep() {
 
   const handleFileChange = (e) => {
     const file = e.target.files?.[0] ?? null;
+    if (!file) return;
+
+    const validationErrors = validateReferenceStep({ referenceFile: file });
+    setErrors(validationErrors);
+    setTouched(true);
+
+    if (hasErrors(validationErrors)) {
+      if (inputRef.current) inputRef.current.value = '';
+      return;
+    }
+
     updateField('referenceFile', file);
   };
 
@@ -39,7 +50,7 @@ export default function ReferenceStep() {
   return (
     <StepCard
       title="Referência do modelo desejado"
-      subtitle="Envie uma imagem PNG, JPEG ou WebP de até 5 MB — ajuda muito na análise."
+      subtitle="Envie uma imagem PNG, JPEG ou WebP de até 4 MB — ajuda muito na análise."
     >
       <Box
         sx={{

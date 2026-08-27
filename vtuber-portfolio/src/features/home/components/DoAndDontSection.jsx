@@ -4,6 +4,7 @@ import Typography from '@mui/material/Typography';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import { doList, dontList } from '../../../shared/utils/profileContent';
+import { DO_AND_DONT_SECTION_ID } from '../../../shared/utils/domIds';
 import { tokens } from '../../../core/config/theme';
 
 function ListColumn({ title, items, icon, accentColor }) {
@@ -40,7 +41,7 @@ function ListColumn({ title, items, icon, accentColor }) {
 
 export default function DoAndDontSection() {
   return (
-    <Box component="section" sx={{ px: { xs: 3, md: 8 }, py: { xs: 6, md: 10 } }}>
+    <Box component="section" id={DO_AND_DONT_SECTION_ID} sx={{ px: { xs: 3, md: 8 }, py: { xs: 6, md: 10 } }}>
       <Typography
         variant="overline"
         sx={{ color: tokens.color.teal, letterSpacing: '0.25em' }}

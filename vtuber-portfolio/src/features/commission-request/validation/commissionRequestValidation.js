@@ -4,7 +4,7 @@ const CONTACT_REGEX = {
   discord: /^.{2,32}#?\d{0,4}$/,
 };
 
-const MAX_REFERENCE_FILE_SIZE = 5 * 1024 * 1024;
+const MAX_REFERENCE_FILE_SIZE = 4 * 1024 * 1024;
 const ALLOWED_REFERENCE_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp']);
 
 export function validateContactStep(data) {
@@ -45,7 +45,7 @@ export function validateReferenceStep(data) {
   } else if (!ALLOWED_REFERENCE_TYPES.has(data.referenceFile.type)) {
     errors.referenceFile = 'Use uma imagem PNG, JPEG ou WebP.';
   } else if (data.referenceFile.size > MAX_REFERENCE_FILE_SIZE) {
-    errors.referenceFile = 'A imagem pode ter no máximo 5 MB.';
+    errors.referenceFile = 'A imagem pode ter no máximo 4 MB.';
   }
   return errors;
 }
