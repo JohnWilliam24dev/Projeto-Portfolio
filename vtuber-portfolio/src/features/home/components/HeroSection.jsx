@@ -7,10 +7,15 @@ import Avatar from '@mui/material/Avatar';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { media } from '../../../core/config/media';
 import { profileContent } from '../../../shared/utils/profileContent';
+import { DO_AND_DONT_SECTION_ID } from '../../../shared/utils/domIds';
 import { tokens } from '../../../core/config/theme';
 
 export default function HeroSection() {
   const navigate = useNavigate();
+
+  const scrollToDoAndDont = () => {
+    document.getElementById(DO_AND_DONT_SECTION_ID)?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <Stack
@@ -63,14 +68,30 @@ export default function HeroSection() {
           Encomendar meu VTuber
         </Button>
 
-        <Button
-          variant="text"
-          color="inherit"
-          onClick={() => navigate('/termos')}
-          sx={{ mt: 1, display: 'block', color: tokens.color.textMuted }}
+        <Stack
+          direction={{ xs: 'column', sm: 'row' }}
+          spacing={1}
+          justifyContent={{ xs: 'center', md: 'flex-start' }}
+          sx={{ mt: 1 }}
         >
-          Termos e condições
-        </Button>
+          <Button
+            variant="text"
+            color="inherit"
+            onClick={() => navigate('/termos')}
+            sx={{ color: tokens.color.textMuted }}
+          >
+            Termos e condições
+          </Button>
+
+          <Button
+            variant="text"
+            color="inherit"
+            onClick={scrollToDoAndDont}
+            sx={{ color: tokens.color.textMuted }}
+          >
+            Faço e não faço
+          </Button>
+        </Stack>
       </Box>
     </Stack>
   );
