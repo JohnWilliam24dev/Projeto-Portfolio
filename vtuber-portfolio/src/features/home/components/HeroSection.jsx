@@ -24,7 +24,7 @@ export default function HeroSection() {
       alignItems="center"
       justifyContent="center"
       spacing={{ xs: 4, md: 8 }}
-      sx={{ minHeight: { xs: 'auto', md: '92vh' }, px: { xs: 3, md: 8 }, py: { xs: 10, md: 4 } }}
+      sx={{ minHeight: { xs: 'auto', md: '70vh' }, px: { xs: 3, md: 8 }, py: { xs: 10, md: 8 } }}
     >
       <Avatar
         src={media.profilePhoto}
