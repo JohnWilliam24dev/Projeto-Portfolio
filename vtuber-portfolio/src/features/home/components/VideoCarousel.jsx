@@ -50,12 +50,13 @@ export default function VideoCarousel({ videos = [] }) {
         >
           {hasVideos ? (
             <Box
-              component="video"
-              key={videos[index].src}
-              src={videos[index].src}
-              poster={videos[index].poster}
-              controls
-              sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              component="iframe"
+              key={videos[index].youtubeId}
+              src={`https://www.youtube-nocookie.com/embed/${videos[index].youtubeId}?rel=0&modestbranding=1`}
+              title={videos[index].title ?? 'Vídeo do portfólio'}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              sx={{ width: '100%', height: '100%', border: 0 }}
             />
           ) : (
             <Stack alignItems="center" spacing={1} sx={{ color: tokens.color.textMuted, p: 3 }}>
@@ -63,7 +64,7 @@ export default function VideoCarousel({ videos = [] }) {
               <Typography variant="body2" align="center">
                 Espaço reservado para os vídeos do portfólio.
                 <br />
-                Adicione os arquivos em <code>src/assets/videos</code> e liste-os em{' '}
+                Suba o vídeo como "não listado" no YouTube e adicione o ID em{' '}
                 <code>videos</code>.
               </Typography>
             </Stack>
