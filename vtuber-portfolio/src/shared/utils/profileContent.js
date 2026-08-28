@@ -84,4 +84,9 @@ export const dontList = [
   'Qualquer coisa que eu considere problemática',
 ];
 
-export const portfolioVideos = [];
+export const portfolioVideos = [
+  { publicId: 'carrossel-video-principal' },
+  { publicId: 'carrossel-video1' },
+  { publicId: 'carrossel-video2' },
+  { publicId: 'carrossel-video3' },
+];
