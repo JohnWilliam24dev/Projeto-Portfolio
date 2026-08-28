@@ -83,3 +83,10 @@ export const dontList = [
   'Outro estilo que não seja o meu',
   'Qualquer coisa que eu considere problemática',
 ];
+
+export const portfolioVideos = [
+  { publicId: 'carrossel-video-principal' },
+  { publicId: 'carrossel-video1' },
+  { publicId: 'carrossel-video2' },
+  { publicId: 'carrossel-video3' },
+];
