@@ -19,12 +19,14 @@ export default function VideoCarousel({ videos = [] }) {
 
   return (
     <Box component="section" sx={{ px: { xs: 3, md: 8 }, py: { xs: 6, md: 10 } }}>
-      <Typography variant="overline" sx={{ color: tokens.color.teal, letterSpacing: '0.25em' }}>
-        Trabalhos em movimento
-      </Typography>
-      <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '2.4rem' }, mb: 4 }}>
-        Modelos em ação
-      </Typography>
+      <Box sx={{ maxWidth: 640, mx: 'auto', textAlign: 'center' }}>
+        <Typography variant="overline" sx={{ color: tokens.color.teal, letterSpacing: '0.25em' }}>
+          Trabalhos em movimento
+        </Typography>
+        <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '2.4rem' }, mb: 4 }}>
+          Modelos em ação
+        </Typography>
+      </Box>
 
       <Box sx={{ position: 'relative', width: '100%', maxWidth: 640, mx: 'auto' }}>
         <Box
@@ -128,7 +130,12 @@ export default function VideoCarousel({ videos = [] }) {
       </Stack>
 
       {hasVideos && videos.length > 1 && (
-        <Stack direction="row" justifyContent="center" spacing={1} sx={{ mt: 1.5 }}>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          spacing={1}
+          sx={{ mt: 1.5, maxWidth: 640, mx: 'auto' }}
+        >
           {videos.map((video, i) => (
             <Box
               key={video.publicId}
