@@ -84,9 +84,4 @@ export const dontList = [
   'Qualquer coisa que eu considere problemática',
 ];
 
-export const portfolioVideos = [
-  { youtubeId: 'WlJai3HgvCY' },
-  { youtubeId: 'wRU29EkkiAY' },
-  { youtubeId: 'YF3d0zn7zjI' },
-  { youtubeId: 'ivQV2r9SYUg' },
-];
+export const portfolioVideos = [];
