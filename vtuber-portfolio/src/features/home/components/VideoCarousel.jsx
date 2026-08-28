@@ -14,6 +14,7 @@ export default function VideoCarousel({ videos = [] }) {
 
   const goPrev = () => setIndex((i) => (i - 1 + videos.length) % videos.length);
   const goNext = () => setIndex((i) => (i + 1) % videos.length);
+  const goTo = (targetIndex) => setIndex(targetIndex);
 
   return (
     <Box component="section" sx={{ px: { xs: 3, md: 8 }, py: { xs: 6, md: 10 } }}>
@@ -43,6 +44,7 @@ export default function VideoCarousel({ videos = [] }) {
             overflow: 'hidden',
             backgroundColor: tokens.color.bgElevated,
             border: `1px solid ${tokens.color.purple}33`,
+            boxShadow: `0 12px 40px ${tokens.color.purpleDeep}55`,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -56,7 +58,16 @@ export default function VideoCarousel({ videos = [] }) {
               title={videos[index].title ?? 'Vídeo do portfólio'}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              sx={{ width: '100%', height: '100%', border: 0 }}
+              sx={{
+                width: '100%',
+                height: '100%',
+                border: 0,
+                animation: 'videoCarouselFadeIn 320ms ease',
+                '@keyframes videoCarouselFadeIn': {
+                  from: { opacity: 0 },
+                  to: { opacity: 1 },
+                },
+              }}
             />
           ) : (
             <Stack alignItems="center" spacing={1} sx={{ color: tokens.color.textMuted, p: 3 }}>
@@ -80,6 +91,31 @@ export default function VideoCarousel({ videos = [] }) {
           <ArrowForwardIosIcon fontSize="small" />
         </IconButton>
       </Stack>
+
+      {hasVideos && videos.length > 1 && (
+        <Stack direction="row" justifyContent="center" spacing={1} sx={{ mt: 2.5 }}>
+          {videos.map((video, i) => (
+            <Box
+              key={video.youtubeId}
+              component="button"
+              type="button"
+              onClick={() => goTo(i)}
+              aria-label={`Ir para o vídeo ${i + 1}`}
+              aria-current={i === index}
+              sx={{
+                width: i === index ? 22 : 8,
+                height: 8,
+                borderRadius: 999,
+                border: 'none',
+                cursor: 'pointer',
+                p: 0,
+                backgroundColor: i === index ? tokens.color.teal : `${tokens.color.purple}55`,
+                transition: 'width 200ms ease, background-color 200ms ease',
+              }}
+            />
+          ))}
+        </Stack>
+      )}
 
       {hasVideos && videos[index].title && (
         <Typography align="center" variant="body2" sx={{ mt: 2, color: tokens.color.textMuted }}>

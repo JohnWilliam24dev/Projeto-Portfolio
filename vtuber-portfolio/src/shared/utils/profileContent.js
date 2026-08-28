@@ -83,3 +83,10 @@ export const dontList = [
   'Outro estilo que não seja o meu',
   'Qualquer coisa que eu considere problemática',
 ];
+
+export const portfolioVideos = [
+  { youtubeId: 'WlJai3HgvCY' },
+  { youtubeId: 'wRU29EkkiAY' },
+  { youtubeId: 'YF3d0zn7zjI' },
+  { youtubeId: 'ivQV2r9SYUg' },
+];
