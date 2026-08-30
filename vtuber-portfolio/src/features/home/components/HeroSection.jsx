@@ -46,14 +46,18 @@ export default function HeroSection() {
           {profileContent.tagline}
         </Typography>
 
-        <Typography variant="h1" sx={{ fontSize: { xs: '2.6rem', md: '3.6rem' }, mt: 1 }}>
+        <Typography
+          variant="h1"
+          sx={{ fontFamily: tokens.font.body, fontSize: { xs: '2.4rem', md: '3.2rem' }, mt: 1 }}
+        >
           {profileContent.name}
         </Typography>
 
         <Typography
           variant="h3"
           sx={{
-            fontSize: { xs: '1.3rem', md: '1.6rem' },
+            fontFamily: tokens.font.body,
+            fontSize: { xs: '1.2rem', md: '1.5rem' },
             color: tokens.color.text,
             mt: 2,
           }}
@@ -110,7 +114,7 @@ export default function HeroSection() {
 
         <Typography
           variant="body1"
-          sx={{ color: tokens.color.text, fontWeight: 600, mt: 2.5 }}
+          sx={{ color: tokens.color.teal, fontWeight: 600, fontSize: '1.2rem', mt: 2.5 }}
         >
           {profileContent.bio.callToAction}
         </Typography>
