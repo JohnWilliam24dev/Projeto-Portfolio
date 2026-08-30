@@ -61,17 +61,18 @@ export default function HeroSection() {
           {profileContent.bio.headline}
         </Typography>
 
-        <Stack spacing={1.5} sx={{ mt: 1.5 }}>
-          {profileContent.bio.paragraphs.map((paragraph) => (
-            <Typography
-              key={paragraph}
-              variant="body1"
-              sx={{ color: tokens.color.textMuted, fontSize: '1.02rem', lineHeight: 1.7 }}
-            >
-              {paragraph}
-            </Typography>
-          ))}
-        </Stack>
+        <Typography
+          variant="body1"
+          sx={{
+            color: tokens.color.teal,
+            fontWeight: 600,
+            fontSize: '1.05rem',
+            mt: 1,
+            lineHeight: 1.5,
+          }}
+        >
+          {profileContent.bio.subheadline}
+        </Typography>
 
         <Stack
           direction="row"
@@ -84,6 +85,8 @@ export default function HeroSection() {
             <Box
               key={specialty}
               sx={{
+                flexShrink: 0,
+                whiteSpace: 'nowrap',
                 px: 1.5,
                 py: 0.5,
                 borderRadius: 999,
@@ -97,6 +100,13 @@ export default function HeroSection() {
             </Box>
           ))}
         </Stack>
+
+        <Typography
+          variant="body2"
+          sx={{ color: tokens.color.textMuted, mt: 2, fontSize: '0.95rem', lineHeight: 1.6 }}
+        >
+          {profileContent.bio.pitch}
+        </Typography>
 
         <Typography
           variant="body1"

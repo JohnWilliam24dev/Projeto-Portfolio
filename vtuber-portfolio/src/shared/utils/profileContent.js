@@ -3,11 +3,8 @@ export const profileContent = {
   tagline: 'Artista de modelos VTuber 3D',
   bio: {
     headline: 'Dê vida à sua ideia.',
-    paragraphs: [
-      'Artista 2D & 3D especializado em transformar personagens, conceitos e universos em experiências visuais que chamam atenção — e ganham vida.',
-      'Do primeiro sketch ao modelo final, desenvolvo VTubers, ilustrações, concept art, personagens e animações, unindo design, narrativa e movimento para transformar uma ideia em algo que o público possa reconhecer, acompanhar e lembrar.',
-      'Você traz a ideia. Eu dou forma, personalidade e vida a ela.',
-    ],
+    subheadline: 'Você traz a ideia. Eu dou forma, personalidade e vida a ela.',
+    pitch: 'Do sketch ao modelo final: VTubers, ilustrações e concept art com personalidade própria.',
     specialties: [
       'VTuber',
       'Character Design',
