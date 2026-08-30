@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -7,15 +8,18 @@ import StepCard from './StepCard';
 import FormNavigationButtons from './FormNavigationButtons';
 import { useCommissionForm } from '../hooks/useCommissionForm';
 import { usePriceSimulator } from '../hooks/usePriceSimulator';
+import { MODEL_TYPES } from '../../../domain/modelTypes';
 import { ADDONS } from '../../../domain/pricing';
 import { formatCurrencyBRL } from '../../../domain/pricing';
 import { tokens } from '../../../core/config/theme';
 
-function AddonNumberField({ label, value, onChange, percentLabel }) {
+function AddonNumberField({ label, value, onChange, percentLabel, disabled }) {
   return (
     <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
       <Box>
-        <Typography variant="body1">{label}</Typography>
+        <Typography variant="body1" sx={{ color: disabled ? tokens.color.textMuted : undefined }}>
+          {label}
+        </Typography>
         <Typography variant="caption" sx={{ color: tokens.color.textMuted }}>
           {percentLabel} por unidade sobre o preço base
         </Typography>
@@ -24,6 +28,7 @@ function AddonNumberField({ label, value, onChange, percentLabel }) {
         type="number"
         value={value}
         onChange={(e) => onChange(Math.max(0, Number(e.target.value)))}
+        disabled={disabled}
         inputProps={{ min: 0, style: { textAlign: 'center', width: 56 } }}
         size="small"
       />
@@ -34,6 +39,14 @@ function AddonNumberField({ label, value, onChange, percentLabel }) {
 export default function AdditionalContentStep() {
   const { data, updateField, goNext, goBack } = useCommissionForm();
   const priceResult = usePriceSimulator(data.modelType, data.acessorios, data.expressoesExtras);
+  const isVariablePriceModel = data.modelType === MODEL_TYPES.OUTROS;
+
+  useEffect(() => {
+    if (isVariablePriceModel && (data.acessorios !== 0 || data.expressoesExtras !== 0)) {
+      updateField('acessorios', 0);
+      updateField('expressoesExtras', 0);
+    }
+  }, [isVariablePriceModel, data.acessorios, data.expressoesExtras, updateField]);
 
   return (
     <StepCard
@@ -57,12 +70,14 @@ export default function AdditionalContentStep() {
           percentLabel="+10%"
           value={data.acessorios}
           onChange={(v) => updateField('acessorios', v)}
+          disabled={isVariablePriceModel}
         />
         <AddonNumberField
           label={ADDONS.EXPRESSOES_EXTRAS.label}
           percentLabel="+5%"
           value={data.expressoesExtras}
           onChange={(v) => updateField('expressoesExtras', v)}
+          disabled={isVariablePriceModel}
         />
 
         <Box
@@ -81,10 +96,16 @@ export default function AdditionalContentStep() {
           <Typography variant="h3" sx={{ color: tokens.color.teal, fontSize: '2rem' }}>
             {priceResult ? formatCurrencyBRL(priceResult.total) : '—'}
           </Typography>
-          {!priceResult && (
+          {isVariablePriceModel ? (
             <Typography variant="caption" sx={{ color: tokens.color.textMuted }}>
-              Selecione um modelo na etapa anterior para simular o preço.
+              O preço simulado é desabilitado nessa modalidade pois o preço é variável.
             </Typography>
+          ) : (
+            !priceResult && (
+              <Typography variant="caption" sx={{ color: tokens.color.textMuted }}>
+                Selecione um modelo na etapa anterior para simular o preço.
+              </Typography>
+            )
           )}
         </Box>
       </Stack>

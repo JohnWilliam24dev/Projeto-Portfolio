@@ -15,7 +15,7 @@ export const ADDONS = Object.freeze({
 
 export function calculateSimulatedPrice(modelId, addonQuantities = {}) {
   const model = getModelById(modelId);
-  if (!model) return null;
+  if (!model || model.basePrice == null) return null;
 
   const acessorios = Number(addonQuantities.acessorios) || 0;
   const expressoesExtras = Number(addonQuantities.expressoesExtras) || 0;

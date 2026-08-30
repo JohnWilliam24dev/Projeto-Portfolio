@@ -2,6 +2,7 @@ export const MODEL_TYPES = Object.freeze({
   CHIBI: 'chibi',
   BASICO: 'basico',
   MEDIO: 'medio',
+  OUTROS: 'outros',
 });
 
 export const MODEL_CATALOG = Object.freeze([
@@ -22,6 +23,12 @@ export const MODEL_CATALOG = Object.freeze([
     label: 'Modelo Médio 3D',
     description: 'Nível de detalhe intermediário, mais riqueza visual.',
     basePrice: 690.0,
+  },
+  {
+    id: MODEL_TYPES.OUTROS,
+    label: 'Outros',
+    description: 'Não encontrou o que procura? Descreva sua ideia no próximo passo.',
+    basePrice: null,
   },
 ]);
 
