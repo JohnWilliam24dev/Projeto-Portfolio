@@ -35,7 +35,7 @@ function ModelOptionCard({ model, selected, onSelect }) {
           {model.label}
         </Typography>
         <Typography variant="h4" sx={{ fontSize: '1.15rem', color: tokens.color.teal }}>
-          {formatCurrencyBRL(model.basePrice)}
+          {model.basePrice == null ? 'Preço variável' : formatCurrencyBRL(model.basePrice)}
         </Typography>
       </Stack>
       <Typography variant="body2" sx={{ color: tokens.color.textMuted, mt: 0.5 }}>
