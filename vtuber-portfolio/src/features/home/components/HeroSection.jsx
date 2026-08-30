@@ -46,15 +46,77 @@ export default function HeroSection() {
           {profileContent.tagline}
         </Typography>
 
-        <Typography variant="h1" sx={{ fontSize: { xs: '2.6rem', md: '3.6rem' }, mt: 1 }}>
+        <Typography
+          variant="h1"
+          sx={{ fontFamily: tokens.font.body, fontSize: { xs: '2.4rem', md: '3.2rem' }, mt: 1 }}
+        >
           {profileContent.name}
         </Typography>
 
         <Typography
-          variant="body1"
-          sx={{ color: tokens.color.textMuted, mt: 2, fontSize: '1.05rem', lineHeight: 1.7 }}
+          variant="h3"
+          sx={{
+            fontFamily: tokens.font.body,
+            fontSize: { xs: '1.2rem', md: '1.5rem' },
+            color: tokens.color.text,
+            mt: 2,
+          }}
         >
-          {profileContent.bio}
+          {profileContent.bio.headline}
+        </Typography>
+
+        <Typography
+          variant="body1"
+          sx={{
+            color: tokens.color.teal,
+            fontWeight: 600,
+            fontSize: '1.05rem',
+            mt: 1,
+            lineHeight: 1.5,
+          }}
+        >
+          {profileContent.bio.subheadline}
+        </Typography>
+
+        <Stack
+          direction="row"
+          flexWrap="wrap"
+          gap={1}
+          justifyContent={{ xs: 'center', md: 'flex-start' }}
+          sx={{ mt: 2.5 }}
+        >
+          {profileContent.bio.specialties.map((specialty) => (
+            <Box
+              key={specialty}
+              sx={{
+                flexShrink: 0,
+                whiteSpace: 'nowrap',
+                px: 1.5,
+                py: 0.5,
+                borderRadius: 999,
+                border: `1px solid ${tokens.color.teal}55`,
+                backgroundColor: `${tokens.color.teal}12`,
+              }}
+            >
+              <Typography variant="caption" sx={{ color: tokens.color.teal }}>
+                {specialty}
+              </Typography>
+            </Box>
+          ))}
+        </Stack>
+
+        <Typography
+          variant="body2"
+          sx={{ color: tokens.color.textMuted, mt: 2, fontSize: '0.95rem', lineHeight: 1.6 }}
+        >
+          {profileContent.bio.pitch}
+        </Typography>
+
+        <Typography
+          variant="body1"
+          sx={{ color: tokens.color.teal, fontWeight: 600, fontSize: '1.2rem', mt: 2.5 }}
+        >
+          {profileContent.bio.callToAction}
         </Typography>
 
         <Button
@@ -63,7 +125,7 @@ export default function HeroSection() {
           color="secondary"
           endIcon={<ArrowForwardIcon />}
           onClick={() => navigate('/comissao')}
-          sx={{ mt: 4 }}
+          sx={{ mt: 3 }}
         >
           Encomendar meu VTuber
         </Button>

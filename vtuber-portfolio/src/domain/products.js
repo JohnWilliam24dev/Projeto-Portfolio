@@ -14,7 +14,7 @@ export const PRODUCT_CATALOG = Object.freeze([
   {
     id: 'sugary',
     type: PRODUCT_TYPES.GALLERY,
-    name: 'Sugary',
+    name: 'Sugary Rose',
     description: 'TODO: escrever a descrição do produto Sugary.',
     imagePublicIds: ['sugary-main', 'sugary1', 'sugary2', 'sugary3'],
   },
