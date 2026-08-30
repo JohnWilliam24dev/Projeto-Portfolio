@@ -51,10 +51,58 @@ export default function HeroSection() {
         </Typography>
 
         <Typography
-          variant="body1"
-          sx={{ color: tokens.color.textMuted, mt: 2, fontSize: '1.05rem', lineHeight: 1.7 }}
+          variant="h3"
+          sx={{
+            fontSize: { xs: '1.3rem', md: '1.6rem' },
+            color: tokens.color.text,
+            mt: 2,
+          }}
         >
-          {profileContent.bio}
+          {profileContent.bio.headline}
+        </Typography>
+
+        <Stack spacing={1.5} sx={{ mt: 1.5 }}>
+          {profileContent.bio.paragraphs.map((paragraph) => (
+            <Typography
+              key={paragraph}
+              variant="body1"
+              sx={{ color: tokens.color.textMuted, fontSize: '1.02rem', lineHeight: 1.7 }}
+            >
+              {paragraph}
+            </Typography>
+          ))}
+        </Stack>
+
+        <Stack
+          direction="row"
+          flexWrap="wrap"
+          gap={1}
+          justifyContent={{ xs: 'center', md: 'flex-start' }}
+          sx={{ mt: 2.5 }}
+        >
+          {profileContent.bio.specialties.map((specialty) => (
+            <Box
+              key={specialty}
+              sx={{
+                px: 1.5,
+                py: 0.5,
+                borderRadius: 999,
+                border: `1px solid ${tokens.color.teal}55`,
+                backgroundColor: `${tokens.color.teal}12`,
+              }}
+            >
+              <Typography variant="caption" sx={{ color: tokens.color.teal }}>
+                {specialty}
+              </Typography>
+            </Box>
+          ))}
+        </Stack>
+
+        <Typography
+          variant="body1"
+          sx={{ color: tokens.color.text, fontWeight: 600, mt: 2.5 }}
+        >
+          {profileContent.bio.callToAction}
         </Typography>
 
         <Button
@@ -63,7 +111,7 @@ export default function HeroSection() {
           color="secondary"
           endIcon={<ArrowForwardIcon />}
           onClick={() => navigate('/comissao')}
-          sx={{ mt: 4 }}
+          sx={{ mt: 3 }}
         >
           Encomendar meu VTuber
         </Button>
