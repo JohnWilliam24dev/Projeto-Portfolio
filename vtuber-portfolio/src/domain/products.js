@@ -7,7 +7,7 @@ export const PRODUCT_CATALOG = Object.freeze([
   {
     id: 'chibi',
     type: PRODUCT_TYPES.GALLERY,
-    name: 'Chibi Model 1 — Purple Butterfly',
+    name: 'Chibi Model — Purple Butterfly',
     description:
       'Uma garota fofa inspirada em borboletas roxas, com um design delicado e encantador. Possui olhos grandes e expressivos na cor roxa, cabelos em tons azulados e um vestido preto e roxo com detalhes que remetem à estética das borboletas. O visual é completado por sapatilhas pretas, dando ao modelo uma aparência simples, elegante e adorável.',
     imagePublicIds: ['chibi-main', 'chibi1', 'chibi2'],
