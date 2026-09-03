@@ -20,7 +20,7 @@ export default function VideoCarousel({ videos = [] }) {
   return (
     <Box component="section" sx={{ px: { xs: 3, md: 8 }, py: { xs: 6, md: 10 } }}>
       <Box sx={{ maxWidth: 640, mx: 'auto', textAlign: 'center' }}>
-        <Typography variant="overline" sx={{ color: tokens.color.teal, letterSpacing: '0.25em' }}>
+        <Typography variant="overline" sx={{ color: tokens.color.accentDeep, letterSpacing: '0.25em' }}>
           Trabalhos em movimento
         </Typography>
         <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '2.4rem' }, mb: 4 }}>
@@ -36,8 +36,8 @@ export default function VideoCarousel({ videos = [] }) {
             borderRadius: 3,
             overflow: 'hidden',
             backgroundColor: tokens.color.bgElevated,
-            border: `1px solid ${tokens.color.purple}33`,
-            boxShadow: `0 12px 40px ${tokens.color.purpleDeep}55`,
+            border: `1px solid ${tokens.color.accent}33`,
+            boxShadow: `0 12px 40px ${tokens.color.accentDeep}55`,
           }}
         >
           {hasVideos ? (
@@ -151,7 +151,7 @@ export default function VideoCarousel({ videos = [] }) {
                 border: 'none',
                 cursor: 'pointer',
                 p: 0,
-                backgroundColor: i === index ? tokens.color.teal : `${tokens.color.purple}55`,
+                backgroundColor: i === index ? tokens.color.teal : `${tokens.color.accent}55`,
                 transition: 'width 200ms ease, background-color 200ms ease',
               }}
             />

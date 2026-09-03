@@ -63,7 +63,7 @@ export default function AdditionalContentStep() {
           fullWidth
         />
 
-        <Divider sx={{ borderColor: `${tokens.color.purple}33` }} />
+        <Divider sx={{ borderColor: `${tokens.color.accent}33` }} />
 
         <AddonNumberField
           label={ADDONS.ACESSORIOS.label}
@@ -93,7 +93,7 @@ export default function AdditionalContentStep() {
           <Typography variant="caption" sx={{ color: tokens.color.textMuted }}>
             Preço simulado
           </Typography>
-          <Typography variant="h3" sx={{ color: tokens.color.teal, fontSize: '2rem' }}>
+          <Typography variant="h3" sx={{ color: tokens.color.accentDeep, fontSize: '2rem' }}>
             {priceResult ? formatCurrencyBRL(priceResult.total) : '—'}
           </Typography>
           {isVariablePriceModel ? (

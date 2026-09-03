@@ -6,8 +6,8 @@ import { tokens } from '../../../core/config/theme';
 
 export default function ProductsSection() {
   return (
-    <Box component="section" sx={{ px: { xs: 3, md: 8 }, py: { xs: 6, md: 10 } }}>
-      <Typography variant="overline" sx={{ color: tokens.color.teal, letterSpacing: '0.25em' }}>
+    <Box component="section" id="produtos" sx={{ px: { xs: 3, md: 8 }, py: { xs: 6, md: 10 } }}>
+      <Typography variant="overline" sx={{ color: tokens.color.accentDeep, letterSpacing: '0.25em' }}>
         Portfólio
       </Typography>
       <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '2.4rem' }, mb: 4 }}>

@@ -1,5 +1,5 @@
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 * {
@@ -30,6 +30,6 @@ body {
 
 /* Foco visível para navegação por teclado (Nielsen: acessibilidade / reconhecimento) */
 :focus-visible {
-  outline: 2px solid #4fd8c7;
+  outline: 2px solid #17d9c4;
   outline-offset: 2px;
 }

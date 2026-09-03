@@ -33,7 +33,7 @@ export default function HeroSection() {
           width: { xs: 200, md: 300 },
           height: { xs: 200, md: 300 },
           border: `2px solid ${tokens.color.teal}66`,
-          boxShadow: `0 0 60px ${tokens.color.purple}55`,
+          boxShadow: `0 0 60px ${tokens.color.accent}55`,
           flexShrink: 0,
         }}
       />
@@ -41,7 +41,7 @@ export default function HeroSection() {
       <Box sx={{ textAlign: { xs: 'center', md: 'left' }, maxWidth: 560 }}>
         <Typography
           variant="overline"
-          sx={{ color: tokens.color.teal, letterSpacing: '0.25em' }}
+          sx={{ color: tokens.color.accentDeep, letterSpacing: '0.25em' }}
         >
           {profileContent.tagline}
         </Typography>
@@ -68,7 +68,7 @@ export default function HeroSection() {
         <Typography
           variant="body1"
           sx={{
-            color: tokens.color.teal,
+            color: tokens.color.accentDeep,
             fontWeight: 600,
             fontSize: '1.05rem',
             mt: 1,
@@ -98,7 +98,7 @@ export default function HeroSection() {
                 backgroundColor: `${tokens.color.teal}12`,
               }}
             >
-              <Typography variant="caption" sx={{ color: tokens.color.teal }}>
+              <Typography variant="caption" sx={{ color: tokens.color.accentDeep }}>
                 {specialty}
               </Typography>
             </Box>
@@ -114,7 +114,7 @@ export default function HeroSection() {
 
         <Typography
           variant="body1"
-          sx={{ color: tokens.color.teal, fontWeight: 600, fontSize: '1.2rem', mt: 2.5 }}
+          sx={{ color: tokens.color.accentDeep, fontWeight: 600, fontSize: '1.2rem', mt: 2.5 }}
         >
           {profileContent.bio.callToAction}
         </Typography>

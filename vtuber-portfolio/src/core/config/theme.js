@@ -2,39 +2,41 @@ import { createTheme } from '@mui/material/styles';
 
 export const tokens = {
   color: {
-    bg: '#0A0C18',
-    bgElevated: '#151830',
-    bgElevated2: '#1E2240',
-    purple: '#7A5AC7',
-    purpleDeep: '#4B2E83',
-    blue: '#5B72F0',
-    teal: '#4FD8C7',
-    text: '#F3F1FA',
-    textMuted: '#ADA9C9',
-    danger: '#F0708B',
-    success: '#4FD8A0',
+    bg: '#EAF6FC',
+    bgElevated: '#FFFFFF',
+    bgElevated2: '#DCEFF7',
+    accent: '#2E7FE0',
+    accentDeep: '#0F3D91',
+    blue: '#29C7F0',
+    teal: '#17D9C4',
+    coral: '#FF6B4A',
+    text: '#0B2036',
+    textMuted: '#4F7089',
+    danger: '#D93A63',
+    success: '#0FA36B',
+    abyss: '#04122B',
   },
   font: {
-    display: "'Cormorant Garamond', serif",
+    display: "'Manrope', sans-serif",
     body: "'Manrope', sans-serif",
   },
 };
 
 const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
     background: {
       default: tokens.color.bg,
       paper: tokens.color.bgElevated,
     },
     primary: {
-      main: tokens.color.purple,
-      dark: tokens.color.purpleDeep,
-      contrastText: tokens.color.text,
+      main: tokens.color.accent,
+      dark: tokens.color.accentDeep,
+      contrastText: '#FFFFFF',
     },
     secondary: {
       main: tokens.color.teal,
-      contrastText: tokens.color.bg,
+      contrastText: tokens.color.text,
     },
     error: {
       main: tokens.color.danger,
@@ -54,25 +56,25 @@ const theme = createTheme({
     fontFamily: tokens.font.body,
     h1: {
       fontFamily: tokens.font.display,
-      fontWeight: 600,
-      letterSpacing: '0.01em',
+      fontWeight: 800,
+      letterSpacing: '-0.01em',
     },
     h2: {
       fontFamily: tokens.font.display,
-      fontWeight: 600,
+      fontWeight: 800,
     },
     h3: {
       fontFamily: tokens.font.display,
-      fontWeight: 600,
+      fontWeight: 700,
     },
     h4: {
       fontFamily: tokens.font.display,
-      fontWeight: 600,
+      fontWeight: 700,
     },
     button: {
       textTransform: 'none',
-      fontWeight: 600,
-      letterSpacing: '0.02em',
+      fontWeight: 700,
+      letterSpacing: '0.01em',
     },
   },
   components: {

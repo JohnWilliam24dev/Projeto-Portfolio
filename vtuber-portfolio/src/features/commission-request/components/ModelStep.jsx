@@ -23,7 +23,7 @@ function ModelOptionCard({ model, selected, onSelect }) {
         cursor: 'pointer',
         p: 2.5,
         borderRadius: 3,
-        border: `2px solid ${selected ? tokens.color.teal : tokens.color.purple + '44'}`,
+        border: `2px solid ${selected ? tokens.color.teal : tokens.color.accent + '44'}`,
         backgroundColor: selected ? `${tokens.color.teal}14` : 'transparent',
         transition: 'border-color 120ms ease, background-color 120ms ease',
         '&:hover': { borderColor: tokens.color.teal },
@@ -34,7 +34,7 @@ function ModelOptionCard({ model, selected, onSelect }) {
         <Typography variant="h4" sx={{ fontSize: '1.15rem' }}>
           {model.label}
         </Typography>
-        <Typography variant="h4" sx={{ fontSize: '1.15rem', color: tokens.color.teal }}>
+        <Typography variant="h4" sx={{ fontSize: '1.15rem', color: tokens.color.accentDeep }}>
           {model.basePrice == null ? 'Preço variável' : formatCurrencyBRL(model.basePrice)}
         </Typography>
       </Stack>

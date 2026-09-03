@@ -15,7 +15,7 @@ export default function ProductGallery({ imagePublicIds, productName }) {
           width: '100%',
           borderRadius: 3,
           overflow: 'hidden',
-          border: `1px solid ${tokens.color.purple}33`,
+          border: `1px solid ${tokens.color.accent}33`,
           backgroundColor: tokens.color.bgElevated,
         }}
       >

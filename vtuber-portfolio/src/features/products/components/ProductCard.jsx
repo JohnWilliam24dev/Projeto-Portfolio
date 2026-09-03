@@ -23,7 +23,7 @@ export default function ProductCard({ product }) {
         cursor: 'pointer',
         borderRadius: 3,
         overflow: 'hidden',
-        border: `1px solid ${tokens.color.purple}33`,
+        border: `1px solid ${tokens.color.accent}33`,
         backgroundColor: `${tokens.color.bgElevated}CC`,
         transition: 'border-color 120ms ease, transform 120ms ease',
         '&:hover': { borderColor: tokens.color.teal, transform: 'translateY(-2px)' },

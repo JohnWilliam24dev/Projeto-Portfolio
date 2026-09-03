@@ -12,7 +12,7 @@ export default function StepCard({ title, subtitle, children }) {
         mx: 'auto',
         p: { xs: 3, md: 5 },
         backgroundColor: `${tokens.color.bgElevated}CC`,
-        border: `1px solid ${tokens.color.purple}33`,
+        border: `1px solid ${tokens.color.accent}33`,
         backdropFilter: 'blur(6px)',
       }}
     >

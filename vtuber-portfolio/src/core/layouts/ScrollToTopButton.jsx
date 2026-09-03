@@ -29,7 +29,7 @@ export default function ScrollToTopButton() {
           right: 24,
           zIndex: 10,
           backgroundColor: tokens.color.bgElevated2,
-          color: tokens.color.teal,
+          color: tokens.color.accentDeep,
           border: `1px solid ${tokens.color.teal}55`,
           '&:hover': { backgroundColor: tokens.color.bgElevated },
         }}

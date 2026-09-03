@@ -45,7 +45,7 @@ export default function TermsPage() {
           sx={{
             p: { xs: 3, md: 5 },
             backgroundColor: `${tokens.color.bgElevated}CC`,
-            border: `1px solid ${tokens.color.purple}33`,
+            border: `1px solid ${tokens.color.accent}33`,
             backdropFilter: 'blur(6px)',
           }}
         >
@@ -63,7 +63,7 @@ export default function TermsPage() {
 
           {sections.map((section, index) => (
             <Box key={section.heading} sx={{ mb: index === sections.length - 1 ? 0 : 4 }}>
-              <Typography variant="h3" sx={{ fontSize: '1.3rem', mb: 2, color: tokens.color.teal }}>
+              <Typography variant="h3" sx={{ fontSize: '1.3rem', mb: 2, color: tokens.color.accentDeep }}>
                 {section.heading}
               </Typography>
 
@@ -79,7 +79,7 @@ export default function TermsPage() {
               ))}
 
               {index < sections.length - 1 && (
-                <Divider sx={{ borderColor: `${tokens.color.purple}33`, mt: 4 }} />
+                <Divider sx={{ borderColor: `${tokens.color.accent}33`, mt: 4 }} />
               )}
             </Box>
           ))}
