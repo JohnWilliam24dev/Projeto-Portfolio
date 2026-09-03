@@ -1,5 +1,5 @@
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 * {
@@ -15,7 +15,11 @@ body,
 
 body {
   -webkit-font-smoothing: antialiased;
+  font-family: 'Nunito', system-ui, sans-serif;
+  background: #061a35;
 }
+
+body::selection { background: #62e7f1; color: #04203d; }
 
 /* Respeita preferência do usuário por menos movimento (acessibilidade) */
 @media (prefers-reduced-motion: reduce) {

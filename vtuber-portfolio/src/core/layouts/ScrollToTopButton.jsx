@@ -28,10 +28,10 @@ export default function ScrollToTopButton() {
           bottom: 24,
           right: 24,
           zIndex: 10,
-          backgroundColor: tokens.color.bgElevated2,
-          color: tokens.color.accentDeep,
-          border: `1px solid ${tokens.color.teal}55`,
-          '&:hover': { backgroundColor: tokens.color.bgElevated },
+          backgroundColor: 'rgba(8,43,79,.9)',
+          color: tokens.color.teal,
+          border: '1px solid rgba(130,226,242,.35)',
+          '&:hover': { backgroundColor: tokens.color.bgElevated2 },
         }}
       >
         <KeyboardArrowUpIcon />

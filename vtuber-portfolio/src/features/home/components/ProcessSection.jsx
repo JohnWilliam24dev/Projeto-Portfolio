@@ -29,11 +29,11 @@ const PROCESS_STEPS = [
 
 export default function ProcessSection() {
   return (
-    <Box component="section" id="processo" sx={{ px: { xs: 3, md: 8 }, py: { xs: 6, md: 10 } }}>
-      <Typography variant="overline" sx={{ color: tokens.color.accentDeep, letterSpacing: '0.25em' }}>
+    <Box component="section" id="processo" sx={{ width: 'min(1180px, 90vw)', mx: 'auto', px: 0, py: { xs: 7, md: 12 } }}>
+      <Typography variant="overline" sx={{ color: tokens.color.teal, letterSpacing: '0.22em', fontWeight: 800 }}>
         Do rascunho ao modelo
       </Typography>
-      <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '2.4rem' }, mb: 4 }}>
+      <Typography variant="h2" sx={{ fontSize: { xs: '2.8rem', md: '4.3rem' }, lineHeight: .95, mb: 5 }}>
         Como a ideia ganha vida
       </Typography>
 
@@ -44,13 +44,15 @@ export default function ProcessSection() {
             sx={{
               flex: 1,
               p: 3,
-              borderRadius: 3,
-              backgroundColor: tokens.color.bgElevated,
-              border: `1px solid ${tokens.color.accent}22`,
-              boxShadow: '0 12px 30px rgba(15, 61, 145, 0.08)',
+              borderRadius: 4,
+              backgroundColor: 'rgba(6,39,72,.57)',
+              border: '1px solid rgba(129,228,241,.17)',
+              boxShadow: '0 18px 45px rgba(0,0,0,.2)',
+              transition: 'transform .25s ease, border-color .25s ease',
+              '&:hover': { transform: 'translateY(-6px)', borderColor: 'rgba(129,228,241,.4)' },
             }}
           >
-            <Typography variant="overline" sx={{ color: tokens.color.accent, fontWeight: 700 }}>
+            <Typography variant="overline" sx={{ color: tokens.color.teal, fontWeight: 800 }}>
               {step.number}
             </Typography>
             <Typography variant="h4" sx={{ fontSize: '1.15rem', mt: 1, mb: 1 }}>

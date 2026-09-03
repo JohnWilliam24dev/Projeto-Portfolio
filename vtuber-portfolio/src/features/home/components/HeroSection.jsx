@@ -23,32 +23,37 @@ export default function HeroSection() {
       direction={{ xs: 'column', md: 'row' }}
       alignItems="center"
       justifyContent="center"
-      spacing={{ xs: 4, md: 8 }}
-      sx={{ minHeight: { xs: 'auto', md: '70vh' }, px: { xs: 3, md: 8 }, py: { xs: 10, md: 8 } }}
+      spacing={{ xs: 5, md: 5 }}
+      sx={{ width: 'min(1180px, 90vw)', mx: 'auto', minHeight: { xs: 'auto', md: 'calc(100vh - 82px)' }, px: 0, py: { xs: 8, md: 9 } }}
     >
       <Avatar
         src={media.profilePhoto}
         alt={`Foto de perfil de ${profileContent.name}`}
         sx={{
-          width: { xs: 200, md: 300 },
-          height: { xs: 200, md: 300 },
-          border: `2px solid ${tokens.color.teal}66`,
-          boxShadow: `0 0 60px ${tokens.color.accent}55`,
+          order: { xs: 0, md: 2 },
+          width: { xs: 250, md: 430 },
+          height: { xs: 250, md: 540 },
+          borderRadius: { xs: '42% 42% 30px 30px', md: '45% 45% 35px 35px' },
+          border: '1px solid rgba(153,241,255,.5)',
+          boxShadow: '0 30px 100px rgba(0,0,0,.45), 0 0 45px rgba(81,223,239,.18)',
+          backgroundColor: 'rgba(3,31,62,.45)',
           flexShrink: 0,
+          position: 'relative',
+          '&::before': { content: '""', position: 'absolute', inset: -34, zIndex: -1, borderRadius: '50%', background: 'radial-gradient(circle, rgba(70,226,240,.24), rgba(43,119,255,.1) 42%, transparent 68%)' },
         }}
       />
 
-      <Box sx={{ textAlign: { xs: 'center', md: 'left' }, maxWidth: 560 }}>
+      <Box sx={{ textAlign: { xs: 'center', md: 'left' }, maxWidth: 640, order: 1 }}>
         <Typography
           variant="overline"
-          sx={{ color: tokens.color.accentDeep, letterSpacing: '0.25em' }}
+          sx={{ color: tokens.color.teal, letterSpacing: '0.22em', fontWeight: 800 }}
         >
           {profileContent.tagline}
         </Typography>
 
         <Typography
           variant="h1"
-          sx={{ fontFamily: tokens.font.body, fontSize: { xs: '2.4rem', md: '3.2rem' }, mt: 1 }}
+          sx={{ fontSize: { xs: '4.2rem', md: 'clamp(5.4rem, 9vw, 7.75rem)' }, lineHeight: .84, letterSpacing: '-.05em', mt: 1.5, color: tokens.color.text }}
         >
           {profileContent.name}
         </Typography>
@@ -56,8 +61,8 @@ export default function HeroSection() {
         <Typography
           variant="h3"
           sx={{
-            fontFamily: tokens.font.body,
-            fontSize: { xs: '1.2rem', md: '1.5rem' },
+            fontFamily: tokens.font.display,
+            fontSize: { xs: '1.65rem', md: '2.55rem' },
             color: tokens.color.text,
             mt: 2,
           }}
@@ -68,9 +73,9 @@ export default function HeroSection() {
         <Typography
           variant="body1"
           sx={{
-            color: tokens.color.accentDeep,
+            color: tokens.color.coral,
             fontWeight: 600,
-            fontSize: '1.05rem',
+            fontSize: '1.12rem',
             mt: 1,
             lineHeight: 1.5,
           }}
@@ -94,11 +99,11 @@ export default function HeroSection() {
                 px: 1.5,
                 py: 0.5,
                 borderRadius: 999,
-                border: `1px solid ${tokens.color.teal}55`,
-                backgroundColor: `${tokens.color.teal}12`,
+                border: '1px solid rgba(99,226,242,.3)',
+                backgroundColor: 'rgba(32,176,202,.06)',
               }}
             >
-              <Typography variant="caption" sx={{ color: tokens.color.accentDeep }}>
+              <Typography variant="caption" sx={{ color: '#bcebf2' }}>
                 {specialty}
               </Typography>
             </Box>
@@ -107,14 +112,14 @@ export default function HeroSection() {
 
         <Typography
           variant="body2"
-          sx={{ color: tokens.color.textMuted, mt: 2, fontSize: '0.95rem', lineHeight: 1.6 }}
+          sx={{ color: tokens.color.textMuted, mt: 2.5, fontSize: '1rem', lineHeight: 1.7 }}
         >
           {profileContent.bio.pitch}
         </Typography>
 
         <Typography
           variant="body1"
-          sx={{ color: tokens.color.accentDeep, fontWeight: 600, fontSize: '1.2rem', mt: 2.5 }}
+          sx={{ color: '#c9e7f1', fontWeight: 600, fontSize: '1.16rem', mt: 2.5 }}
         >
           {profileContent.bio.callToAction}
         </Typography>

@@ -13,10 +13,10 @@ export default function ProductGallery({ imagePublicIds, productName }) {
       <Box
         sx={{
           width: '100%',
-          borderRadius: 3,
+          borderRadius: 4,
           overflow: 'hidden',
-          border: `1px solid ${tokens.color.accent}33`,
-          backgroundColor: tokens.color.bgElevated,
+          border: '1px solid rgba(130,226,242,.28)',
+          backgroundColor: 'rgba(5,32,63,.68)',
         }}
       >
         <Box

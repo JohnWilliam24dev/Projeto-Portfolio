@@ -47,14 +47,14 @@ export default function PageBackground({ children }) {
   const bubblesOpacity = 1 - depthRatio * 0.7;
 
   return (
-    <Box sx={{ position: 'relative', minHeight: '100vh' }}>
+    <Box sx={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
       <Box
         aria-hidden="true"
         sx={{
           position: 'fixed',
           inset: 0,
           zIndex: -2,
-          backgroundColor: depthColor,
+          background: `radial-gradient(circle at 78% 12%, rgba(79,225,255,${0.22 - depthRatio * 0.1}), transparent 25%), radial-gradient(circle at 8% 75%, rgba(102,93,255,${0.18 - depthRatio * 0.08}), transparent 28%), linear-gradient(145deg, ${depthColor} 0%, #08345f 45%, #061a35 100%)`,
           transition: 'background-color 160ms linear',
         }}
       />
@@ -79,8 +79,10 @@ export default function PageBackground({ children }) {
               width: bubble.size,
               height: bubble.size,
               borderRadius: '50%',
-              background: `radial-gradient(circle at 35% 30%, ${bubble.color}4D, ${bubble.color}00 70%)`,
-              filter: 'blur(1px)',
+              border: '1px solid rgba(190,250,255,.24)',
+              background: `radial-gradient(circle at 35% 30%, ${bubble.color}24, transparent 70%)`,
+              boxShadow: 'inset 5px 5px 15px rgba(255,255,255,.08)',
+              filter: 'blur(.3px)',
               animation: `pageBackgroundFloat ${bubble.duration}s ease-in-out ${bubble.delay}s infinite`,
               '@keyframes pageBackgroundFloat': {
                 '0%, 100%': { transform: 'translateY(0px)' },

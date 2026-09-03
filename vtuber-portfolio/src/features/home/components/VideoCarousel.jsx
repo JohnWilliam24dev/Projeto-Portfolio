@@ -18,12 +18,12 @@ export default function VideoCarousel({ videos = [] }) {
   const goTo = (targetIndex) => setIndex(targetIndex);
 
   return (
-    <Box component="section" sx={{ px: { xs: 3, md: 8 }, py: { xs: 6, md: 10 } }}>
+    <Box component="section" sx={{ width: 'min(1180px, 90vw)', mx: 'auto', px: 0, py: { xs: 7, md: 12 } }}>
       <Box sx={{ maxWidth: 640, mx: 'auto', textAlign: 'center' }}>
-        <Typography variant="overline" sx={{ color: tokens.color.accentDeep, letterSpacing: '0.25em' }}>
+        <Typography variant="overline" sx={{ color: tokens.color.teal, letterSpacing: '0.22em', fontWeight: 800 }}>
           Trabalhos em movimento
         </Typography>
-        <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '2.4rem' }, mb: 4 }}>
+        <Typography variant="h2" sx={{ fontSize: { xs: '2.8rem', md: '4.3rem' }, lineHeight: .95, mb: 4 }}>
           Modelos em ação
         </Typography>
       </Box>
@@ -33,11 +33,11 @@ export default function VideoCarousel({ videos = [] }) {
           sx={{
             width: '100%',
             aspectRatio: '16 / 9',
-            borderRadius: 3,
+            borderRadius: 4,
             overflow: 'hidden',
-            backgroundColor: tokens.color.bgElevated,
-            border: `1px solid ${tokens.color.accent}33`,
-            boxShadow: `0 12px 40px ${tokens.color.accentDeep}55`,
+            backgroundColor: 'rgba(5,32,63,.68)',
+            border: '1px solid rgba(130,226,242,.28)',
+            boxShadow: '0 26px 65px rgba(0,0,0,.3)',
           }}
         >
           {hasVideos ? (
