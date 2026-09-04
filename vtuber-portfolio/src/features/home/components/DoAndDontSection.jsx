@@ -44,7 +44,7 @@ export default function DoAndDontSection() {
     <Box component="section" id={DO_AND_DONT_SECTION_ID} sx={{ px: { xs: 3, md: 8 }, py: { xs: 6, md: 10 } }}>
       <Typography
         variant="overline"
-        sx={{ color: tokens.color.teal, letterSpacing: '0.25em' }}
+        sx={{ color: tokens.color.accentDeep, letterSpacing: '0.25em' }}
       >
         Antes de encomendar
       </Typography>

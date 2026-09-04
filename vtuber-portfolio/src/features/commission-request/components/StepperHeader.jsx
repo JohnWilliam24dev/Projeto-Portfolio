@@ -24,10 +24,10 @@ export default function StepperHeader({ currentStep }) {
             fontSize: { xs: '0.7rem', md: '0.85rem' },
           },
           '& .MuiStepLabel-label.Mui-active': { color: tokens.color.text },
-          '& .MuiStepLabel-label.Mui-completed': { color: tokens.color.teal },
+          '& .MuiStepLabel-label.Mui-completed': { color: tokens.color.accentDeep },
           '& .MuiStepIcon-root': { color: tokens.color.bgElevated2 },
-          '& .MuiStepIcon-root.Mui-active': { color: tokens.color.purple },
-          '& .MuiStepIcon-root.Mui-completed': { color: tokens.color.teal },
+          '& .MuiStepIcon-root.Mui-active': { color: tokens.color.accent },
+          '& .MuiStepIcon-root.Mui-completed': { color: tokens.color.accentDeep },
         }}
       >
         {STEP_LABELS.map((label) => (

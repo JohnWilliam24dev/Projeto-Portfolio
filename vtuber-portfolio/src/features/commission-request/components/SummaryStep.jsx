@@ -39,20 +39,20 @@ export default function SummaryStep({ onConfirm }) {
       <Stack spacing={1.5}>
         <SummaryRow label="Como te chamar" value={data.nickname} />
         <SummaryRow label="Contato" value={data.contact} />
-        <Divider sx={{ borderColor: `${tokens.color.purple}33`, my: 1 }} />
+        <Divider sx={{ borderColor: `${tokens.color.accent}33`, my: 1 }} />
         <SummaryRow label="Modelo" value={model?.label} />
         <SummaryRow label="Conteúdos adicionais" value={data.additionalContentNotes} />
         <SummaryRow label="Acessórios" value={`${data.acessorios}x`} />
         <SummaryRow label="Expressões extras" value={`${data.expressoesExtras}x`} />
         <SummaryRow label="Referência enviada" value={data.referenceFile?.name} />
 
-        <Divider sx={{ borderColor: `${tokens.color.purple}33`, my: 1 }} />
+        <Divider sx={{ borderColor: `${tokens.color.accent}33`, my: 1 }} />
 
         <Stack direction="row" justifyContent="space-between" alignItems="baseline">
           <Typography variant="h4" sx={{ fontSize: '1.1rem' }}>
             Preço simulado
           </Typography>
-          <Typography variant="h3" sx={{ color: tokens.color.teal, fontSize: '1.7rem' }}>
+          <Typography variant="h3" sx={{ color: tokens.color.accentDeep, fontSize: '1.7rem' }}>
             {priceResult ? formatCurrencyBRL(priceResult.total) : '—'}
           </Typography>
         </Stack>
@@ -84,7 +84,7 @@ export default function SummaryStep({ onConfirm }) {
               to="/termos"
               target="_blank"
               rel="noopener noreferrer"
-              sx={{ color: tokens.color.teal }}
+              sx={{ color: tokens.color.accentDeep }}
             >
               termos e condições
             </Link>

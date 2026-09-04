@@ -15,7 +15,11 @@ body,
 
 body {
   -webkit-font-smoothing: antialiased;
+  font-family: 'Nunito', system-ui, sans-serif;
+  background: #061a35;
 }
+
+body::selection { background: #62e7f1; color: #04203d; }
 
 /* Respeita preferência do usuário por menos movimento (acessibilidade) */
 @media (prefers-reduced-motion: reduce) {
@@ -30,6 +34,6 @@ body {
 
 /* Foco visível para navegação por teclado (Nielsen: acessibilidade / reconhecimento) */
 :focus-visible {
-  outline: 2px solid #4fd8c7;
+  outline: 2px solid #17d9c4;
   outline-offset: 2px;
 }

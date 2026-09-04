@@ -44,9 +44,11 @@ export default function TermsPage() {
           elevation={0}
           sx={{
             p: { xs: 3, md: 5 },
-            backgroundColor: `${tokens.color.bgElevated}CC`,
-            border: `1px solid ${tokens.color.purple}33`,
-            backdropFilter: 'blur(6px)',
+            background: 'linear-gradient(135deg, rgba(7,58,99,.78), rgba(8,32,65,.88))',
+            border: '1px solid rgba(130,230,242,.27)',
+            borderRadius: 5,
+            boxShadow: '0 28px 80px rgba(0,8,30,.35)',
+            backdropFilter: 'blur(12px)',
           }}
         >
           <Typography variant="h2" sx={{ fontSize: { xs: '1.8rem', md: '2.2rem' }, mb: 3 }}>
@@ -63,7 +65,7 @@ export default function TermsPage() {
 
           {sections.map((section, index) => (
             <Box key={section.heading} sx={{ mb: index === sections.length - 1 ? 0 : 4 }}>
-              <Typography variant="h3" sx={{ fontSize: '1.3rem', mb: 2, color: tokens.color.teal }}>
+              <Typography variant="h3" sx={{ fontSize: '1.3rem', mb: 2, color: tokens.color.accentDeep }}>
                 {section.heading}
               </Typography>
 
@@ -79,7 +81,7 @@ export default function TermsPage() {
               ))}
 
               {index < sections.length - 1 && (
-                <Divider sx={{ borderColor: `${tokens.color.purple}33`, mt: 4 }} />
+                <Divider sx={{ borderColor: `${tokens.color.accent}33`, mt: 4 }} />
               )}
             </Box>
           ))}

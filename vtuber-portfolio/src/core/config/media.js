@@ -10,5 +10,4 @@ export function buildCloudinaryVideoUrl(publicId, transformations) {
 
 export const media = {
   profilePhoto: buildCloudinaryUrl('foto_de_perfil', 'f_auto,q_auto,w_600,h_600,c_fill,g_face'),
-  backgroundPhoto: buildCloudinaryUrl('Fundo', 'f_auto,q_auto,w_1600'),
 };

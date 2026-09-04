@@ -54,7 +54,7 @@ export default function ReferenceStep() {
     >
       <Box
         sx={{
-          border: `2px dashed ${tokens.color.purple}66`,
+          border: `2px dashed ${tokens.color.accent}66`,
           borderRadius: 3,
           p: 4,
           textAlign: 'center',

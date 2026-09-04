@@ -6,11 +6,11 @@ import { tokens } from '../../../core/config/theme';
 
 export default function ProductsSection() {
   return (
-    <Box component="section" sx={{ px: { xs: 3, md: 8 }, py: { xs: 6, md: 10 } }}>
-      <Typography variant="overline" sx={{ color: tokens.color.teal, letterSpacing: '0.25em' }}>
+    <Box component="section" id="produtos" sx={{ width: 'min(1180px, 90vw)', mx: 'auto', px: 0, py: { xs: 7, md: 12 } }}>
+      <Typography variant="overline" sx={{ color: tokens.color.teal, letterSpacing: '0.22em', fontWeight: 800 }}>
         Portfólio
       </Typography>
-      <Typography variant="h2" sx={{ fontSize: { xs: '2rem', md: '2.4rem' }, mb: 4 }}>
+      <Typography variant="h2" sx={{ fontSize: { xs: '2.8rem', md: '4.3rem' }, lineHeight: .95, mb: 4 }}>
         Produtos
       </Typography>
 
