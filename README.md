@@ -27,10 +27,10 @@ Crie `vtuber-portfolio/.env.local` a partir de `vtuber-portfolio/.env.example` e
 
 ```bash
 VITE_API_BASE_URL=https://seu-backend.vercel.app
-VITE_MAKER_PUBLIC_ID=00000000-0000-0000-0000-000000000000
+MAKER_PUBLIC_ID=00000000-0000-0000-0000-000000000000
 ```
 
-Na Vercel do frontend (com **Root Directory** configurado como `vtuber-portfolio`), inclua as mesmas variáveis em **Settings → Environment Variables** para Preview e Production, garanta que a origem do site esteja em `ALLOWED_ORIGINS` no backend e faça o deploy. `vtuber-portfolio/vercel.json` já inclui o rewrite de SPA para `index.html`. Essa URL e o `publicId` são públicos por definição; tokens e credenciais sensíveis ficam exclusivamente no projeto de backend.
+Na Vercel do frontend (com **Root Directory** configurado como `vtuber-portfolio`), inclua as mesmas variáveis em **Settings → Environment Variables** para Preview e Production. Note que, embora `VITE_API_BASE_URL` precise do prefixo `VITE_` para ser injetado no build do Vite, o `MAKER_PUBLIC_ID` é lido via `import.meta.env` e deve ser configurado na Vercel da mesma forma (simples `MAKER_PUBLIC_ID`). Garanta que a origem do site esteja em `ALLOWED_ORIGINS` no backend e faça o deploy. `vtuber-portfolio/vercel.json` já inclui o rewrite de SPA para `index.html`. Essas variáveis são públicas por definição; tokens e credenciais sensíveis ficam exclusivamente no projeto de backend.
 
 ## Estrutura
 
