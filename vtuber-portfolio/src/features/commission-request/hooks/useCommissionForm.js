@@ -10,6 +10,17 @@ export function useCommissionForm() {
     [dispatch]
   );
 
+  const updateAddon = useCallback(
+    (adicionalId, patch) =>
+      dispatch({ type: commissionFormActions.UPDATE_ADDON, adicionalId, ...patch }),
+    [dispatch]
+  );
+
+  const resetAddons = useCallback(
+    () => dispatch({ type: commissionFormActions.RESET_ADDONS }),
+    [dispatch]
+  );
+
   const goNext = useCallback(() => dispatch({ type: commissionFormActions.GO_NEXT }), [dispatch]);
   const goBack = useCallback(() => dispatch({ type: commissionFormActions.GO_BACK }), [dispatch]);
   const goToStep = useCallback(
@@ -26,6 +37,8 @@ export function useCommissionForm() {
     isSubmitting: state.isSubmitting,
     submitError: state.submitError,
     updateField,
+    updateAddon,
+    resetAddons,
     goNext,
     goBack,
     goToStep,

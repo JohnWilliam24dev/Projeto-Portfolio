@@ -1,42 +1,44 @@
-import { getModelById } from './modelTypes';
+export function parseMoney(value) {
+  if (value === null || value === undefined || value === '') return null;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
+}
 
-export const ADDONS = Object.freeze({
-  ACESSORIOS: {
-    id: 'acessorios',
-    label: 'Acessórios (chifres, enfeites no cabelo, roupas extras etc.)',
-    percentPerUnit: 0.1,
-  },
-  EXPRESSOES_EXTRAS: {
-    id: 'expressoesExtras',
-    label: 'Expressões extras',
-    percentPerUnit: 0.05,
-  },
-});
+/**
+ * Calcula a simulação de preço no frontend exatamente com os valores já arredondados
+ * (`precoBase` e `valorUnitario`) fornecidos por `GET /makers/:publicId/catalogo`.
+ * O servidor sempre recalcula e valida o valor oficial ao gravar o pedido.
+ */
+export function calculateSimulatedPrice(selectedType, selectedAddons = {}) {
+  if (!selectedType) return null;
 
-export function calculateSimulatedPrice(modelId, addonQuantities = {}) {
-  const model = getModelById(modelId);
-  if (!model || model.basePrice == null) return null;
+  const basePrice = parseMoney(selectedType.precoBase);
+  if (basePrice === null) return null;
 
-  const acessorios = Number(addonQuantities.acessorios) || 0;
-  const expressoesExtras = Number(addonQuantities.expressoesExtras) || 0;
+  let addonsTotal = 0;
+  for (const addon of selectedType.adicionais ?? []) {
+    const selection = selectedAddons[addon.id];
+    const quantity = Number(selection?.quantity) || 0;
+    if (quantity <= 0) continue;
 
-  const acessoriosValue =
-    model.basePrice * ADDONS.ACESSORIOS.percentPerUnit * Math.max(0, acessorios);
-  const expressoesValue =
-    model.basePrice * ADDONS.EXPRESSOES_EXTRAS.percentPerUnit * Math.max(0, expressoesExtras);
+    const unitPrice = parseMoney(addon.valorUnitario);
+    if (unitPrice === null) return null;
 
-  const addonsTotal = acessoriosValue + expressoesValue;
+    addonsTotal += unitPrice * quantity;
+  }
 
   return {
-    basePrice: model.basePrice,
+    basePrice,
     addonsTotal,
-    total: model.basePrice + addonsTotal,
+    total: basePrice + addonsTotal,
   };
 }
 
 export function formatCurrencyBRL(value) {
+  const numeric = typeof value === 'number' ? value : parseMoney(value);
+  if (numeric === null) return '—';
   return new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
-  }).format(value);
+  }).format(numeric);
 }

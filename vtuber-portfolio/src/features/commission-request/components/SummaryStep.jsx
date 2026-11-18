@@ -11,7 +11,6 @@ import StepCard from './StepCard';
 import FormNavigationButtons from './FormNavigationButtons';
 import { useCommissionForm } from '../hooks/useCommissionForm';
 import { usePriceSimulator } from '../hooks/usePriceSimulator';
-import { getModelById } from '../../../domain/modelTypes';
 import { formatCurrencyBRL } from '../../../domain/pricing';
 import { tokens } from '../../../core/config/theme';
 
@@ -21,44 +20,84 @@ function SummaryRow({ label, value }) {
       <Typography variant="body2" sx={{ color: tokens.color.textMuted }}>
         {label}
       </Typography>
-      <Typography variant="body2" sx={{ textAlign: 'right', maxWidth: '60%' }}>
+      <Typography variant="body2" sx={{ textAlign: 'right', maxWidth: '60%', whiteSpace: 'pre-wrap' }}>
         {value || '—'}
       </Typography>
     </Stack>
   );
 }
 
-export default function SummaryStep({ onConfirm }) {
+export default function SummaryStep({ catalog, onConfirm }) {
   const { data, goBack, isSubmitting, submitError } = useCommissionForm();
-  const model = getModelById(data.modelType);
-  const priceResult = usePriceSimulator(data.modelType, data.acessorios, data.expressoesExtras);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
+
+  const isCatalogMode = catalog?.config?.modalidade === 'CATALOGO';
+  const showPrices = Boolean(catalog?.config?.exibirValores);
+  const selectedType = isCatalogMode
+    ? catalog?.tipos?.find((t) => t.id === data.tipoProdutoId) ?? null
+    : null;
+  const priceResult = usePriceSimulator(selectedType, data.adicionais, showPrices);
+
+  const selectedAddons = (selectedType?.adicionais ?? [])
+    .map((addon) => {
+      const sel = data.adicionais[addon.id];
+      if (!sel || Number(sel.quantity) <= 0) return null;
+      return {
+        id: addon.id,
+        nome: addon.nome,
+        quantity: Number(sel.quantity),
+        descricaoCliente: sel.descricaoCliente,
+      };
+    })
+    .filter(Boolean);
 
   return (
     <StepCard title="Resumo do seu pedido" subtitle="Confira antes de enviar para análise.">
       <Stack spacing={1.5}>
-        <SummaryRow label="Como te chamar" value={data.nickname} />
-        <SummaryRow label="Contato" value={data.contact} />
+        <SummaryRow label="Como te chamar" value={data.nomeCliente} />
+        <SummaryRow label="Contato" value={data.contato} />
+        {data.email?.trim() && <SummaryRow label="E-mail" value={data.email.trim()} />}
+
         <Divider sx={{ borderColor: `${tokens.color.accent}33`, my: 1 }} />
-        <SummaryRow label="Modelo" value={model?.label} />
-        <SummaryRow label="Conteúdos adicionais" value={data.additionalContentNotes} />
-        <SummaryRow label="Acessórios" value={`${data.acessorios}x`} />
-        <SummaryRow label="Expressões extras" value={`${data.expressoesExtras}x`} />
+
+        {isCatalogMode && <SummaryRow label="Modelo" value={selectedType?.nome} />}
+        <SummaryRow label="Descrição" value={data.descricao} />
+
+        {selectedAddons.map((addon) => (
+          <SummaryRow
+            key={addon.id}
+            label={`${addon.nome} (${addon.quantity}x)`}
+            value={addon.descricaoCliente}
+          />
+        ))}
+
         <SummaryRow label="Referência enviada" value={data.referenceFile?.name} />
 
-        <Divider sx={{ borderColor: `${tokens.color.accent}33`, my: 1 }} />
+        {isCatalogMode && showPrices && (
+          <>
+            <Divider sx={{ borderColor: `${tokens.color.accent}33`, my: 1 }} />
+            <Stack direction="row" justifyContent="space-between" alignItems="baseline">
+              <Typography variant="h4" sx={{ fontSize: '1.1rem' }}>
+                Preço simulado
+              </Typography>
+              <Typography variant="h3" sx={{ color: tokens.color.accentDeep, fontSize: '1.7rem' }}>
+                {priceResult ? formatCurrencyBRL(priceResult.total) : '—'}
+              </Typography>
+            </Stack>
+            <Typography variant="caption" sx={{ color: tokens.color.textMuted }}>
+              Valor sujeito a confirmação após a análise da referência e dos adicionais.
+            </Typography>
+          </>
+        )}
 
-        <Stack direction="row" justifyContent="space-between" alignItems="baseline">
-          <Typography variant="h4" sx={{ fontSize: '1.1rem' }}>
-            Preço simulado
-          </Typography>
-          <Typography variant="h3" sx={{ color: tokens.color.accentDeep, fontSize: '1.7rem' }}>
-            {priceResult ? formatCurrencyBRL(priceResult.total) : '—'}
-          </Typography>
-        </Stack>
-        <Typography variant="caption" sx={{ color: tokens.color.textMuted }}>
-          Valor sujeito a confirmação após a análise da referência e dos adicionais.
-        </Typography>
+        {(!isCatalogMode || !showPrices) && (
+          <>
+            <Divider sx={{ borderColor: `${tokens.color.accent}33`, my: 1 }} />
+            <Typography variant="caption" sx={{ color: tokens.color.textMuted }}>
+              O orçamento final será definido pelo artista após a análise do pedido.
+            </Typography>
+          </>
+        )}
       </Stack>
 
       {submitError && (

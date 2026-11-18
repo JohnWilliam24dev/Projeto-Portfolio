@@ -4,28 +4,17 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
 import Alert from '@mui/material/Alert';
+import CircularProgress from '@mui/material/CircularProgress';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import PageBackground from '../../../core/layouts/PageBackground';
-import { profileContent } from '../../../shared/utils/profileContent';
+import { useMakerProfile } from '../../maker/hooks/useMakerProfile';
 import { tokens } from '../../../core/config/theme';
-
-function TermsList({ items }) {
-  return (
-    <Stack component="ul" spacing={1} sx={{ m: 0, pl: 3 }}>
-      {items.map((item) => (
-        <Typography key={item} component="li" variant="body1" sx={{ color: tokens.color.text }}>
-          {item}
-        </Typography>
-      ))}
-    </Stack>
-  );
-}
 
 export default function TermsPage() {
   const navigate = useNavigate();
-  const { notice, agreement, sections } = profileContent.termsAndConditions;
+  const { profile, loading, error, reload } = useMakerProfile();
+  const rawTerms = profile?.termosCondicoes?.trim() ?? '';
 
   return (
     <PageBackground>
@@ -55,36 +44,42 @@ export default function TermsPage() {
             Termos e condições
           </Typography>
 
-          <Alert severity="warning" sx={{ mb: 3 }}>
-            {notice}
-          </Alert>
-
-          <Typography variant="body1" sx={{ color: tokens.color.textMuted, mb: 4 }}>
-            {agreement}
-          </Typography>
-
-          {sections.map((section, index) => (
-            <Box key={section.heading} sx={{ mb: index === sections.length - 1 ? 0 : 4 }}>
-              <Typography variant="h3" sx={{ fontSize: '1.3rem', mb: 2, color: tokens.color.accentDeep }}>
-                {section.heading}
+          {loading ? (
+            <Stack alignItems="center" spacing={2} sx={{ py: 6 }}>
+              <CircularProgress size={32} color="secondary" />
+              <Typography variant="body2" sx={{ color: tokens.color.textMuted }}>
+                Carregando termos e condições…
               </Typography>
-
-              {section.items && <TermsList items={section.items} />}
-
-              {section.subsections?.map((subsection) => (
-                <Box key={subsection.subheading} sx={{ mt: 2.5 }}>
-                  <Typography variant="h4" sx={{ fontSize: '1.05rem', mb: 1.5 }}>
-                    {subsection.subheading}
-                  </Typography>
-                  <TermsList items={subsection.items} />
-                </Box>
-              ))}
-
-              {index < sections.length - 1 && (
-                <Divider sx={{ borderColor: `${tokens.color.accent}33`, mt: 4 }} />
-              )}
-            </Box>
-          ))}
+            </Stack>
+          ) : error ? (
+            <Alert
+              severity="error"
+              action={
+                <Button color="inherit" size="small" onClick={reload}>
+                  Tentar novamente
+                </Button>
+              }
+            >
+              {error}
+            </Alert>
+          ) : rawTerms ? (
+            <Typography
+              component="div"
+              variant="body1"
+              sx={{
+                color: tokens.color.text,
+                lineHeight: 1.75,
+                whiteSpace: 'pre-wrap',
+                wordBreak: 'break-word',
+              }}
+            >
+              {rawTerms}
+            </Typography>
+          ) : (
+            <Alert severity="info">
+              Os termos e condições deste artista ainda não foram cadastrados.
+            </Alert>
+          )}
         </Paper>
       </Box>
     </PageBackground>

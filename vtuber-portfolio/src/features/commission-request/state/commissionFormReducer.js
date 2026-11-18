@@ -5,18 +5,21 @@ export const initialCommissionFormState = {
   isSubmitting: false,
   submitError: null,
   data: {
-    nickname: '',
-    contact: '',
-    modelType: '',
-    additionalContentNotes: '',
-    acessorios: 0,
-    expressoesExtras: 0,
+    nomeCliente: '',
+    contato: '',
+    email: '',
+    tipoProdutoId: '',
+    descricao: '',
+    adicionais: {},
     referenceFile: null,
+    website: '',
   },
 };
 
 export const commissionFormActions = Object.freeze({
   UPDATE_FIELD: 'UPDATE_FIELD',
+  UPDATE_ADDON: 'UPDATE_ADDON',
+  RESET_ADDONS: 'RESET_ADDONS',
   GO_NEXT: 'GO_NEXT',
   GO_BACK: 'GO_BACK',
   GO_TO_STEP: 'GO_TO_STEP',
@@ -26,8 +29,18 @@ export const commissionFormActions = Object.freeze({
   RESET: 'RESET',
 });
 
-const { UPDATE_FIELD, GO_NEXT, GO_BACK, GO_TO_STEP, SUBMIT_START, SUBMIT_SUCCESS, SUBMIT_ERROR, RESET } =
-  commissionFormActions;
+const {
+  UPDATE_FIELD,
+  UPDATE_ADDON,
+  RESET_ADDONS,
+  GO_NEXT,
+  GO_BACK,
+  GO_TO_STEP,
+  SUBMIT_START,
+  SUBMIT_SUCCESS,
+  SUBMIT_ERROR,
+  RESET,
+} = commissionFormActions;
 
 export function commissionFormReducer(state, action) {
   switch (action.type) {
@@ -35,6 +48,34 @@ export function commissionFormReducer(state, action) {
       return {
         ...state,
         data: { ...state.data, [action.field]: action.value },
+      };
+
+    case UPDATE_ADDON: {
+      const { adicionalId, quantity, descricaoCliente } = action;
+      const current = state.data.adicionais[adicionalId] ?? { quantity: 0, descricaoCliente: '' };
+      const nextQty = quantity !== undefined ? quantity : current.quantity;
+      const nextDesc = descricaoCliente !== undefined ? descricaoCliente : current.descricaoCliente;
+
+      const nextAdicionais = { ...state.data.adicionais };
+      if (nextQty <= 0) {
+        delete nextAdicionais[adicionalId];
+      } else {
+        nextAdicionais[adicionalId] = {
+          quantity: nextQty,
+          descricaoCliente: nextDesc,
+        };
+      }
+
+      return {
+        ...state,
+        data: { ...state.data, adicionais: nextAdicionais },
+      };
+    }
+
+    case RESET_ADDONS:
+      return {
+        ...state,
+        data: { ...state.data, adicionais: {} },
       };
 
     case GO_NEXT:

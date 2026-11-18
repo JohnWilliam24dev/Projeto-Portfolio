@@ -12,7 +12,7 @@ npm run dev
 ```
 
 Abre em `http://localhost:5173`. Home em `/`, formulário em `/comissao`,
-termos em `/termos`.
+acompanhamento por código em `/pedido` (ou `/pedido/:token`), termos em `/termos`.
 
 Para gerar a versão de produção:
 
@@ -23,13 +23,14 @@ npm run preview # serve o build localmente pra conferir
 
 ## Integração com a API
 
-Crie `vtuber-portfolio/.env.local` a partir de `vtuber-portfolio/.env.example` e defina a URL do projeto de backend publicado:
+Crie `vtuber-portfolio/.env.local` a partir de `vtuber-portfolio/.env.example` e defina a URL do backend (`A-BR-BACK`) e o UUID público do Maker (`makers.public_id`):
 
 ```bash
 VITE_API_BASE_URL=https://seu-backend.vercel.app
+VITE_MAKER_PUBLIC_ID=00000000-0000-0000-0000-000000000000
 ```
 
-Na Vercel do frontend, inclua a mesma variável em **Settings → Environment Variables** para Preview e Production e faça um novo deploy. Essa URL é pública por definição; tokens do Telegram ficam exclusivamente no projeto de backend.
+Na Vercel do frontend (com **Root Directory** configurado como `vtuber-portfolio`), inclua as mesmas variáveis em **Settings → Environment Variables** para Preview e Production, garanta que a origem do site esteja em `ALLOWED_ORIGINS` no backend e faça o deploy. `vtuber-portfolio/vercel.json` já inclui o rewrite de SPA para `index.html`. Essa URL e o `publicId` são públicos por definição; tokens e credenciais sensíveis ficam exclusivamente no projeto de backend.
 
 ## Estrutura
 

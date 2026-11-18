@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import { buildCloudinaryUrl } from '../../../core/config/media';
 import { tokens } from '../../../core/config/theme';
 
-export default function ProductGallery({ imagePublicIds, productName }) {
+export default function ProductGallery({ images = [], productName }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const heroUrl = buildCloudinaryUrl(imagePublicIds[selectedIndex], 'f_auto,q_auto,w_900');
+  const validImages = images.filter(Boolean);
+  const heroUrl = validImages[selectedIndex] ?? validImages[0];
+
+  if (!heroUrl) {
+    return null;
+  }
 
   return (
     <Stack spacing={2}>
@@ -27,17 +31,17 @@ export default function ProductGallery({ imagePublicIds, productName }) {
         />
       </Box>
 
-      {imagePublicIds.length > 1 && (
+      {validImages.length > 1 && (
         <Stack direction="row" spacing={1.5} flexWrap="wrap">
-          {imagePublicIds.map((publicId, index) => (
+          {validImages.map((imageUrl, index) => (
             <Box
-              key={publicId}
+              key={`${imageUrl}-${index}`}
               component="img"
               role="button"
               tabIndex={0}
               onClick={() => setSelectedIndex(index)}
               onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setSelectedIndex(index)}
-              src={buildCloudinaryUrl(publicId, 'f_auto,q_auto,w_150,h_150,c_fill')}
+              src={imageUrl}
               alt={`${productName} - variação ${index + 1}`}
               sx={{
                 width: 72,

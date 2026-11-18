@@ -1,17 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { buildCloudinaryUrl } from '../../../core/config/media';
 import { tokens } from '../../../core/config/theme';
 
 export default function ProductCard({ product }) {
   const navigate = useNavigate();
-  const thumbnailUrl = buildCloudinaryUrl(
-    product.imagePublicIds[0],
-    'f_auto,q_auto,w_500,h_500,c_fill'
-  );
 
-  const goToDetail = () => navigate(`/produtos/${product.id}`);
+  const goToDetail = () => navigate(`/produtos/${product.id}`, { state: { product } });
 
   return (
     <Box
@@ -33,14 +28,24 @@ export default function ProductCard({ product }) {
     >
       <Box
         component="img"
-        src={thumbnailUrl}
+        src={product.imageUrl}
         alt={product.name}
         loading="lazy"
         sx={{ width: '100%', aspectRatio: '1 / 1', objectFit: 'cover', display: 'block' }}
       />
-      <Typography variant="h4" sx={{ fontSize: '1.18rem', p: 2, textAlign: 'left' }}>
-        {product.name}
-      </Typography>
+      <Box sx={{ p: 2, textAlign: 'left' }}>
+        {product.productType && (
+          <Typography
+            variant="caption"
+            sx={{ color: tokens.color.teal, fontWeight: 700, letterSpacing: '0.08em', display: 'block', mb: 0.5 }}
+          >
+            {product.productType}
+          </Typography>
+        )}
+        <Typography variant="h4" sx={{ fontSize: '1.18rem' }}>
+          {product.name}
+        </Typography>
+      </Box>
     </Box>
   );
 }
