@@ -7,11 +7,14 @@ import Avatar from '@mui/material/Avatar';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { media } from '../../../core/config/media';
 import { profileContent } from '../../../shared/utils/profileContent';
+import { useMakerProfile } from '../../maker/hooks/useMakerProfile';
 import { DO_AND_DONT_SECTION_ID } from '../../../shared/utils/domIds';
 import { tokens } from '../../../core/config/theme';
 
 export default function HeroSection() {
   const navigate = useNavigate();
+  const { profile } = useMakerProfile();
+  const displayName = profile?.nome?.trim() || profileContent.name;
 
   const scrollToDoAndDont = () => {
     document.getElementById(DO_AND_DONT_SECTION_ID)?.scrollIntoView({ behavior: 'smooth' });
@@ -28,7 +31,7 @@ export default function HeroSection() {
     >
       <Avatar
         src={media.profilePhoto}
-        alt={`Foto de perfil de ${profileContent.name}`}
+        alt={`Foto de perfil de ${displayName}`}
         sx={{
           order: { xs: 0, md: 2 },
           width: { xs: 250, md: 430 },
@@ -55,7 +58,7 @@ export default function HeroSection() {
           variant="h1"
           sx={{ fontSize: { xs: '4.2rem', md: 'clamp(5.4rem, 9vw, 7.75rem)' }, lineHeight: .84, letterSpacing: '-.05em', mt: 1.5, color: tokens.color.text }}
         >
-          {profileContent.name}
+          {displayName}
         </Typography>
 
         <Typography
@@ -157,6 +160,15 @@ export default function HeroSection() {
             sx={{ color: tokens.color.textMuted }}
           >
             Faço e não faço
+          </Button>
+
+          <Button
+            variant="text"
+            color="inherit"
+            onClick={() => navigate('/pedido')}
+            sx={{ color: tokens.color.textMuted }}
+          >
+            Acompanhar pedido
           </Button>
         </Stack>
       </Box>

@@ -3,15 +3,17 @@ import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import FormHelperText from '@mui/material/FormHelperText';
+import Alert from '@mui/material/Alert';
 import StepCard from './StepCard';
 import FormNavigationButtons from './FormNavigationButtons';
 import { useCommissionForm } from '../hooks/useCommissionForm';
 import { validateModelStep, hasErrors } from '../validation/commissionRequestValidation';
-import { MODEL_CATALOG } from '../../../domain/modelTypes';
 import { formatCurrencyBRL } from '../../../domain/pricing';
 import { tokens } from '../../../core/config/theme';
 
-function ModelOptionCard({ model, selected, onSelect }) {
+function ModelOptionCard({ model, selected, onSelect, showPrice }) {
+  const addonsCount = model.adicionais?.length ?? 0;
+
   return (
     <Box
       role="radio"
@@ -30,28 +32,44 @@ function ModelOptionCard({ model, selected, onSelect }) {
         '&:focus-visible': { outline: `2px solid ${tokens.color.teal}`, outlineOffset: 2 },
       }}
     >
-      <Stack direction="row" justifyContent="space-between" alignItems="baseline">
+      <Stack direction="row" justifyContent="space-between" alignItems="baseline" spacing={2}>
         <Typography variant="h4" sx={{ fontSize: '1.15rem' }}>
-          {model.label}
+          {model.nome}
         </Typography>
-        <Typography variant="h4" sx={{ fontSize: '1.15rem', color: tokens.color.accentDeep }}>
-          {model.basePrice == null ? 'Preço variável' : formatCurrencyBRL(model.basePrice)}
-        </Typography>
+        {showPrice && model.precoBase !== undefined && (
+          <Typography variant="h4" sx={{ fontSize: '1.15rem', color: tokens.color.accentDeep }}>
+            {formatCurrencyBRL(model.precoBase)}
+          </Typography>
+        )}
       </Stack>
-      <Typography variant="body2" sx={{ color: tokens.color.textMuted, mt: 0.5 }}>
-        {model.description}
-      </Typography>
+      {addonsCount > 0 && (
+        <Typography variant="body2" sx={{ color: tokens.color.textMuted, mt: 0.5 }}>
+          {addonsCount === 1
+            ? '1 adicional disponível para este modelo.'
+            : `${addonsCount} adicionais disponíveis para este modelo.`}
+        </Typography>
+      )}
     </Box>
   );
 }
 
-export default function ModelStep() {
-  const { data, updateField, goNext, goBack } = useCommissionForm();
+export default function ModelStep({ catalog }) {
+  const { data, updateField, resetAddons, goNext, goBack } = useCommissionForm();
   const [touched, setTouched] = useState(false);
   const [errors, setErrors] = useState({});
 
+  const tipos = catalog?.tipos ?? [];
+  const showPrices = Boolean(catalog?.config?.exibirValores);
+
+  const handleSelectModel = (tipoId) => {
+    if (data.tipoProdutoId !== tipoId) {
+      updateField('tipoProdutoId', tipoId);
+      resetAddons();
+    }
+  };
+
   const handleNext = () => {
-    const validationErrors = validateModelStep(data);
+    const validationErrors = validateModelStep(data, catalog);
     setErrors(validationErrors);
     setTouched(true);
     if (!hasErrors(validationErrors)) goNext();
@@ -60,25 +78,37 @@ export default function ModelStep() {
   return (
     <StepCard
       title="Qual tipo de modelo VTuber você deseja?"
-      subtitle="O preço base varia conforme o nível de detalhe."
+      subtitle={
+        showPrices
+          ? 'O preço base varia conforme o tipo escolhido.'
+          : 'Escolha a categoria do pedido para continuar.'
+      }
     >
-      <Stack role="radiogroup" aria-label="Tipo de modelo" spacing={2}>
-        {MODEL_CATALOG.map((model) => (
-          <ModelOptionCard
-            key={model.id}
-            model={model}
-            selected={data.modelType === model.id}
-            onSelect={() => updateField('modelType', model.id)}
-          />
-        ))}
-      </Stack>
-      {touched && errors.modelType && (
+      {tipos.length === 0 ? (
+        <Alert severity="info">
+          Nenhum tipo de produto disponível no catálogo no momento.
+        </Alert>
+      ) : (
+        <Stack role="radiogroup" aria-label="Tipo de modelo" spacing={2}>
+          {tipos.map((model) => (
+            <ModelOptionCard
+              key={model.id}
+              model={model}
+              selected={data.tipoProdutoId === model.id}
+              onSelect={() => handleSelectModel(model.id)}
+              showPrice={showPrices}
+            />
+          ))}
+        </Stack>
+      )}
+
+      {touched && errors.tipoProdutoId && (
         <FormHelperText error sx={{ mt: 1 }}>
-          {errors.modelType}
+          {errors.tipoProdutoId}
         </FormHelperText>
       )}
 
-      <FormNavigationButtons onBack={goBack} onNext={handleNext} />
+      <FormNavigationButtons onBack={goBack} onNext={handleNext} nextDisabled={tipos.length === 0} />
     </StepCard>
   );
 }

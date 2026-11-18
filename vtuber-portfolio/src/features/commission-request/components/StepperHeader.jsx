@@ -4,15 +4,15 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import { tokens } from '../../../core/config/theme';
 
-export const STEP_LABELS = [
+const DEFAULT_STEP_LABELS = [
   'Como te chamar',
   'Tipo de modelo',
-  'Adicionais',
+  'Descrição e adicionais',
   'Referência',
   'Resumo',
 ];
 
-export default function StepperHeader({ currentStep }) {
+export default function StepperHeader({ currentStep, labels = DEFAULT_STEP_LABELS }) {
   return (
     <Box sx={{ maxWidth: 720, mx: 'auto', px: { xs: 2, md: 0 }, pt: { xs: 4, md: 6 }, pb: 2 }}>
       <Stepper
@@ -30,7 +30,7 @@ export default function StepperHeader({ currentStep }) {
           '& .MuiStepIcon-root.Mui-completed': { color: tokens.color.accentDeep },
         }}
       >
-        {STEP_LABELS.map((label) => (
+        {labels.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
           </Step>

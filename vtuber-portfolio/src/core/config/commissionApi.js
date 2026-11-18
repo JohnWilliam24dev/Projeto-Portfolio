@@ -1,5 +1,5 @@
-const configuredApiBaseUrl = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, '');
+import { apiConfig } from './apiClient';
 
-export const commissionApiUrl = configuredApiBaseUrl
-  ? `${configuredApiBaseUrl}/commission`
-  : '/commission';
+export const commissionApiUrl = apiConfig.baseUrl
+  ? `${apiConfig.baseUrl}/commissions`
+  : '/commissions';

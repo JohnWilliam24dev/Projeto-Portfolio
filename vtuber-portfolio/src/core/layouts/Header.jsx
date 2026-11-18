@@ -53,6 +53,13 @@ export default function Header() {
               {link.label}
             </Button>
           ))}
+          <Button
+            variant="text"
+            onClick={() => navigate('/pedido')}
+            sx={{ color: '#c5e0ef', fontWeight: 700, '&:hover': { color: '#fff' } }}
+          >
+            Acompanhar pedido
+          </Button>
         </Stack>
 
         <Button variant="outlined" onClick={() => navigate('/comissao')} sx={{ color: tokens.color.text, borderColor: 'rgba(130,226,242,.32)', backgroundColor: 'rgba(55,198,220,.08)', '&:hover': { borderColor: tokens.color.teal, backgroundColor: 'rgba(55,198,220,.16)' } }}>
