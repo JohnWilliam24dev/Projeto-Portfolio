@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const configuredApiBaseUrl = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, '') || '';
-const configuredMakerPublicId = import.meta.env.VITE_MAKER_PUBLIC_ID?.trim() || '';
+const configuredMakerPublicId = import.meta.env.MAKER_PUBLIC_ID?.trim() || '';
 
 export const apiConfig = Object.freeze({
   baseUrl: configuredApiBaseUrl,

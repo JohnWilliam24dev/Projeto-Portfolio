@@ -6,7 +6,7 @@ let inflightMakerRequest = null;
 
 export async function fetchPublicMakerProfile({ forceRefresh = false } = {}) {
   if (!hasMakerConfigured()) {
-    throw new Error('VITE_MAKER_PUBLIC_ID não configurado.');
+    throw new Error('MAKER_PUBLIC_ID não configurado.');
   }
 
   if (!forceRefresh && cachedMakerProfile) {

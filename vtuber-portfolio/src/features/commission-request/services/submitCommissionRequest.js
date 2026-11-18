@@ -4,7 +4,7 @@ export async function submitCommissionRequest(orderPayload, { catalog } = {}) {
   if (!hasMakerConfigured()) {
     return {
       success: false,
-      error: 'Configuração do artista ausente (VITE_MAKER_PUBLIC_ID).',
+      error: 'Configuração do artista ausente (MAKER_PUBLIC_ID).',
     };
   }
 

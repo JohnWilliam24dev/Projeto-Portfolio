@@ -16,7 +16,7 @@ function normalizeProduct(item) {
 
 export async function fetchPortfolioProducts({ limite = DEFAULT_PAGE_LIMIT, offset = 0, forceRefresh = false } = {}) {
   if (!hasMakerConfigured()) {
-    throw new Error('VITE_MAKER_PUBLIC_ID não configurado.');
+    throw new Error('MAKER_PUBLIC_ID não configurado.');
   }
 
   const cacheKey = `${limite}:${offset}`;
