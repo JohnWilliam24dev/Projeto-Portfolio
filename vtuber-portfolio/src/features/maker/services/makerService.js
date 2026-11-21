@@ -1,5 +1,4 @@
 import { apiClient, apiConfig, extractApiErrorMessage, hasMakerConfigured } from '../../../core/config/apiClient';
-import { decodificarEscopo } from '../../../shared/utils/escopoTexto';
 
 let cachedMakerProfile = null;
 let inflightMakerRequest = null;
@@ -20,14 +19,13 @@ export async function fetchPublicMakerProfile({ forceRefresh = false } = {}) {
   inflightMakerRequest = apiClient
     .get(`/makers/${apiConfig.makerPublicId}`)
     .then(({ data }) => {
-      const escopo = decodificarEscopo(data.facoENaoFaco);
       const profile = {
         publicId: data.publicId,
         nome: data.nome ?? '',
         termosCondicoes: data.termosCondicoes ?? null,
-        facoENaoFaco: data.facoENaoFaco ?? null,
-        faz: escopo.faz,
-        naoFaz: escopo.naoFaz,
+        // O contrato público fornece as listas já limpas e na ordem do artista.
+        faco: Array.isArray(data.faco) ? data.faco : [],
+        naoFaco: Array.isArray(data.naoFaco) ? data.naoFaco : [],
       };
       cachedMakerProfile = profile;
       return profile;
