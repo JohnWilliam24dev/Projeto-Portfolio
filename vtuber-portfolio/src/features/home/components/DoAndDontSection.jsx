@@ -10,48 +10,47 @@ import { useMakerProfile } from '../../maker/hooks/useMakerProfile';
 import { DO_AND_DONT_SECTION_ID } from '../../../shared/utils/domIds';
 import { tokens } from '../../../core/config/theme';
 
-function ListColumn({ title, items, icon, accentColor, emptyMessage }) {
+function ListColumn({ title, items, icon, accentColor }) {
+  if (items.length === 0) return null;
+
   return (
     <Box sx={{ flex: 1, minWidth: 0 }}>
       <Typography variant="h3" sx={{ fontSize: '1.5rem', mb: 2, color: accentColor }}>
         {title}
       </Typography>
-      {items.length === 0 ? (
-        <Typography variant="body2" sx={{ color: tokens.color.textMuted }}>
-          {emptyMessage}
-        </Typography>
-      ) : (
-        <Stack spacing={1.25}>
-          {items.map((item, idx) => (
-            <Stack
-              key={`${item}-${idx}`}
-              direction="row"
-              alignItems="center"
-              spacing={1.5}
-              sx={{
-                px: 2,
-                py: 1,
-                borderRadius: 2,
-                border: `1px solid ${accentColor}40`,
-                backgroundColor: `${accentColor}0F`,
-              }}
-            >
-              <Box sx={{ color: accentColor, display: 'flex', flexShrink: 0 }}>{icon}</Box>
-              <Typography variant="body2" sx={{ color: tokens.color.text }}>
-                {item}
-              </Typography>
-            </Stack>
-          ))}
-        </Stack>
-      )}
+      <Stack spacing={1.25}>
+        {items.map((item, idx) => (
+          <Stack
+            key={`${item}-${idx}`}
+            direction="row"
+            alignItems="center"
+            spacing={1.5}
+            sx={{
+              px: 2,
+              py: 1,
+              borderRadius: 2,
+              border: `1px solid ${accentColor}40`,
+              backgroundColor: `${accentColor}0F`,
+            }}
+          >
+            <Box sx={{ color: accentColor, display: 'flex', flexShrink: 0 }}>{icon}</Box>
+            <Typography variant="body2" sx={{ color: tokens.color.text }}>
+              {item}
+            </Typography>
+          </Stack>
+        ))}
+      </Stack>
     </Box>
   );
 }
 
 export default function DoAndDontSection() {
   const { profile, loading, error, reload } = useMakerProfile();
-  const faz = profile?.faz ?? [];
-  const naoFaz = profile?.naoFaz ?? [];
+  const faco = profile?.faco ?? [];
+  const naoFaco = profile?.naoFaco ?? [];
+  const hasItems = faco.length > 0 || naoFaco.length > 0;
+
+  if (!loading && !error && !hasItems) return null;
 
   return (
     <Box
@@ -95,17 +94,15 @@ export default function DoAndDontSection() {
         >
           <ListColumn
             title="Eu faço"
-            items={faz}
+            items={faco}
             icon={<CheckIcon fontSize="small" />}
             accentColor={tokens.color.success}
-            emptyMessage="Nenhum item cadastrado."
           />
           <ListColumn
             title="Eu não faço"
-            items={naoFaz}
+            items={naoFaco}
             icon={<CloseIcon fontSize="small" />}
             accentColor={tokens.color.danger}
-            emptyMessage="Nenhum item cadastrado."
           />
         </Stack>
       )}
